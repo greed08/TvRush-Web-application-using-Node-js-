@@ -1,0 +1,84 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #000;
+}
+.logo
+{
+
+  height:100px;
+}
+
+input[type=search] {
+  width: 130px;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+  background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+
+	padding: 9px 10px 9px 32px;
+	width: 40px;
+
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 180px;
+	background-color: #fff;
+	border-color: #fff;
+
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+   outline: none;
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+#menu-items
+{
+
+     font-family: 'Signika', sans-serif;
+   font-size:20px;
+}
+a:hover{
+
+}
+li:hover
+{
+  color:#fff;
+}
+
+#join
+{
+  margin-bottom: 50px;
+  width:180px;
+  height:50px;
+
+}
+#heading
+{
+  margin-bottom:50px;;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bolder;
+  font-size:3.7vw;
+}
+#subhead
+{
+  margin-bottom: 50px;
+}

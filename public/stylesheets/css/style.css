@@ -3,16 +3,39 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
+#modal-body
+{
+
+    font-family: 'Oswald', sans-serif;
+    background-color:#fff;
+
+}
 
 a {
   color: #000;
 }
-.logo
+#my-modal
 {
 
-  height:100px;
+  font-family: 'Oswald', sans-serif;
+
+}
+#modal-head
+{
+  background-color:#fff;
+  font-family: 'Oswald', sans-serif;
+  color:rgb(167, 167, 167);
 }
 
+#nav-bar
+{
+  background-color: rgba(38, 28, 9,0.5);
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
 input[type=search] {
   width: 130px;
 	padding-left: 32px;
@@ -53,11 +76,15 @@ input::-webkit-input-placeholder {
 #menu-items
 {
 
-     font-family: 'Signika', sans-serif;
+    font-family: 'Oswald', sans-serif;
    font-size:20px;
 }
 a:hover{
-
+ text-decoration: none;
+}
+#menu-items:hover
+{
+  text-decoration: none;
 }
 li:hover
 {
@@ -78,7 +105,26 @@ li:hover
   font-weight: bolder;
   font-size:3.7vw;
 }
+
+
+
+footer
+  {
+
+    font-family: 'Roboto Mono', monospace;
+
+  }
+#foot
+{
+ color:#0DD5FC;
+ text-align: center;
+ background-color:#000;
+ height:50px;
+}
+
 #subhead
 {
   margin-bottom: 50px;
+  font-family: 'Roboto Mono', monospace;
+  font-size:2vw;
 }

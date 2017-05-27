@@ -42,7 +42,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(8001,function()
+app.listen(8002,function()
 {
   console.log('Tv app started listening on port 3000!');
 })

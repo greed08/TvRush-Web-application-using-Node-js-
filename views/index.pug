@@ -1,8 +1,39 @@
 extends layout
 
 block content
+   div.modal#my-modal
+    div.modal-dialog
+      div.modal-content#modal-content
+        div.modal-header#modal-head
+          button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+          h1#join-header(style="font-weight:bolder;text-align:center;") TvRush
+        div.modal-body#modal-body
+          form.form-horizontal
+            fieldset
+              div.form-group
+                label.col-lg-2.control-label(for="Email")
+                div.col-lg-8
 
-   nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+                  input.form-control#input_email(type="email",placeholder="Email")
+
+              div.form-group
+                label.col-lg-2.control-label(for="Username")
+                div.col-lg-8
+                  input.form-control#input_username(type="text",placeholder="Username")
+              div.form-group
+                label.col-lg-2.control-label(for="Password")
+                div.col-lg-8
+                  input.form-control#input_password(type="password",placeholder="Password")
+              div.form-group
+                label.col-lg-2.control-label(for="Confirm Password") 
+                div.col-lg-8
+                  input.form-control#confirm_password(type="password",placeholder="Confirm Password")
+              hr
+              div.form-group
+                div.col-lg-8
+                  button.btn.btn-danger.btn-lg(style="float:right;") JOIN TV RUSH
+
+   nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
     div.container-fluid
       div.navbar-header
         button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
@@ -20,6 +51,8 @@ block content
             a(href="TV") TV
           li
             a(href="#") ABOUT
+          li
+            a(href="#") CONTACTS
           li
             a(href="#") SIGN IN
         form.navbar-form.navbar-right(role="search")
@@ -40,6 +73,9 @@ block content
           h1#heading Track what you're watching.
           h3#subhead Find your favourite tv shows
           button.btn-warning#join JOIN TV RUSH
-      div.item
-        div.fill#second-image
-          h1 Okkkkk
+   footer#foot
+    div
+      span
+        p Developed By:Greed
+          br
+          i A human with no extraordinary powers

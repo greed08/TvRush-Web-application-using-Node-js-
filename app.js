@@ -44,6 +44,6 @@ app.use(function(err, req, res, next) {
 });
 app.listen(8002,function()
 {
-  console.log('Tv app started listening on port 3000!');
+  console.log('Tv app started listening on port 8001!');
 })
 module.exports = app;

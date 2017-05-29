@@ -4,8 +4,23 @@ var express = require('express');
 
 var router = express.Router();
 
+router.post('/new',function(req,res)
+{
+  if(req.xhr || req.accepts('json,html')==='json'){
+
+          var ty=typeof(req.body);
+        //  console.log(ty);
+         var form_data=req.body;
+         console.log(form_data['password']);
+           res.send({success:true});
+      } else {
+
+      }
+});
+module.exports = router;
+
 /* GET users listing.*/
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
   var name='Omkar',
   email ='Omilpsablock@gmail.com';
 
@@ -20,7 +35,4 @@ router.get('/', function(req, res, next) {
   });
   res.send('respond with a resource');
 
-});
-exports.create=function(req,res){
-  res.render('signUpForm');
-};
+});*/

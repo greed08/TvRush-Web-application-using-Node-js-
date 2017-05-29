@@ -1,5 +1,7 @@
 extends layout
 block content
+
+
    nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
     div.container-fluid
       div.navbar-header
@@ -46,3 +48,36 @@ block content
         p Developed By:Greed
           br
           i A human with no extraordinary powers
+          div.modal#my-modal
+           div.modal-dialog
+             div.modal-content#modal-content
+               div.modal-header#modal-head
+                 button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+                 h1#join-header(style="font-weight:bolder;text-align:center;") TvRush
+               div.modal-body#modal-body
+                 form.form-horizontal#form-sign-up(action="http://localhost:8001/users/new",name="regis-form",onsubmit="return validateForm()")
+                   fieldset
+                     span#error
+                     div.form-group
+                       label.col-lg-2.control-label(for="Email")
+                       div.col-lg-8
+
+                         input.form-control#input_email(name="email",type="email",placeholder="Email")
+
+
+                     div.form-group
+                       label.col-lg-2.control-label(for="Username")
+                       div.col-lg-8
+                         input.form-control#input_username(name="user",type="text",placeholder="Username")
+                     div.form-group
+                       label.col-lg-2.control-label(for="Password")
+                       div.col-lg-8
+                         input.form-control#input_password(name="pass",type="password",placeholder="Password")
+                     div.form-group
+                       label.col-lg-2.control-label(for="Confirm Password")
+                       div.col-lg-8
+                         input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
+                     hr
+                     div.form-group
+                       div.col-lg-8
+                         button.btn.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH

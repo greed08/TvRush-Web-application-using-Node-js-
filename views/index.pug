@@ -10,6 +10,8 @@ block content
           span.icon-bar
           span.icon-bar
           span.icon-bar
+        a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
+          img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
 
 
       div.collapse.navbar-collapse#bs-example-navbar-collapse-1
@@ -51,30 +53,32 @@ block content
           div.modal#my-modal
            div.modal-dialog
              div.modal-content#modal-content
-               div.modal-header#modal-head
-                 button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
-                 h1#join-header(style="font-weight:bolder;text-align:center;") TvRush
+               //div.modal-header#modal-head
+                 //img.img-responsive(src='images/logo.png')
+                 //button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
                div.modal-body#modal-body
+                 img.img-responsive(src='images/logo.png')
+                 hr
                  form.form-horizontal#form-sign-up(action="http://localhost:8001/users/new",name="regis-form",onsubmit="return validateForm()")
                    fieldset
-                     span#error
+                     h5#error(style="margin-bottom:5px;color:rgb(214, 44, 26);")
                      div.form-group
-                       label.col-lg-2.control-label(for="Email")
+                       label.col-lg-2.control-label(for="Email") Email
                        div.col-lg-8
 
                          input.form-control#input_email(name="email",type="email",placeholder="Email")
 
 
                      div.form-group
-                       label.col-lg-2.control-label(for="Username")
+                       label.col-lg-2.control-label(for="Username") Username
                        div.col-lg-8
                          input.form-control#input_username(name="user",type="text",placeholder="Username")
                      div.form-group
-                       label.col-lg-2.control-label(for="Password")
+                       label.col-lg-2.control-label(for="Password") Password
                        div.col-lg-8
                          input.form-control#input_password(name="pass",type="password",placeholder="Password")
                      div.form-group
-                       label.col-lg-2.control-label(for="Confirm Password")
+                       label.col-lg-2.control-label(for="Confirm Password") Re-enter Password
                        div.col-lg-8
                          input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
                      hr

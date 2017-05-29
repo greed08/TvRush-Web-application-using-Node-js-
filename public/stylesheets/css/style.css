@@ -7,10 +7,14 @@ body {
 {
 
     font-family: 'Oswald', sans-serif;
-    background-color:#fff;
+    background-color:#dddfd4;
+
 
 }
-
+.control-label
+{
+  color:#173e43;
+}
 a {
   color: #000;
 }

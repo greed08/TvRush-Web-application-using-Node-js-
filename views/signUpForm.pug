@@ -1,0 +1,33 @@
+extends layout
+block content
+  div.modal#my-modal
+   div.modal-dialog
+     div.modal-content#modal-content
+       div.modal-header#modal-head
+         button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+         h1#join-header(style="font-weight:bolder;text-align:center;") TvRush
+       div.modal-body#modal-body
+         form.form-horizontal
+           fieldset
+             div.form-group
+               label.col-lg-2.control-label(for="Email")
+               div.col-lg-8
+
+                 input.form-control#input_email(type="email",placeholder="Email")
+
+             div.form-group
+               label.col-lg-2.control-label(for="Username")
+               div.col-lg-8
+                 input.form-control#input_username(type="text",placeholder="Username")
+             div.form-group
+               label.col-lg-2.control-label(for="Password")
+               div.col-lg-8
+                 input.form-control#input_password(type="password",placeholder="Password")
+             div.form-group
+               label.col-lg-2.control-label(for="Confirm Password")
+               div.col-lg-8
+                 input.form-control#confirm_password(type="password",placeholder="Confirm Password")
+             hr
+             div.form-group
+               div.col-lg-8
+                 button.btn.btn-danger.btn-lg(style="float:right;") JOIN TV RUSH

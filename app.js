@@ -1,18 +1,21 @@
 var express = require('express');
 var db=require('./model/db');
 var path = require('path');
+var passport=require('passport')
+, FacebookStrategy=require('passport-facebook').Strategy;
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
+
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,8 +49,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(8001,function()
+app.listen(8000,function()
 {
-  console.log('Tv app started listening on port 8001!');
+  console.log('Tv app started listening on port 8000!');
 })
 module.exports = app;

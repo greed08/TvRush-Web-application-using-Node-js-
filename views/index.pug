@@ -1,6 +1,35 @@
 extends layout
 block content
 
+   div.modal#my-modal2
+    div.modal-dialog
+      div.modal-content
+        //div.modal-header
+          //button.close(data-dismiss="modal",aria-hidden="true",type="button") &times;
+          //h4.modal-title Title
+        div.modal-body
+        img.img-responsive(src='images/logo.png')
+        span
+           h2(style="color:rgb(167, 167, 167)")
+             i How you doin'?
+        hr(style="display:block;border-top:2px solid #173e43;")
+        //hr(style="display:block;border-top:4px solid #173e43;")
+        h5#err(style="margin-bottom:20px;color:rgb(214, 44, 26);")
+        form.form-horizontal#form-sign-in(action="http://localhost:8000/users/login")
+          fieldset
+            div.form-group
+              label.col-lg-2.control-label(for="Username") Username
+              div.col-lg-8
+                input.form-control#input_user(name="user",type="text",placeholder="Username")
+
+            div.form-group
+              label.col-lg-2.control-label(for="Password") Password
+              div.col-lg-8
+                input.form-control#input_pass(name="pass",type="password",placeholder="Password")
+
+            div.form-group
+              div.col-lg-8
+               button.btn-danger.btn-lg#sign-in(style="float:right;") SIGN IN
 
    nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
     div.container-fluid
@@ -25,7 +54,7 @@ block content
           li
             a(href="#") CONTACTS
           li
-            a(href="#") SIGN IN
+            a#sign_in(href="#") SIGN IN
         form.navbar-form.navbar-right(role="search")
 
 
@@ -45,11 +74,17 @@ block content
           h3#subhead Find your favourite tv shows
           button.btn-warning#join JOIN TV RUSH
    footer#foot
+
     div
+
       span
-        p Developed By:Greed
-          br
-          i A human with no extraordinary powers
+        p Developed and Designed By:Greed&nbsp
+          a(href="https://github.com/greed08")
+            i.fa.fa-github(aria-hidden="true")
+          a(href="https://www.facebook.com/greeed08",style="padding-left:5px;")
+            i.fa.fa-facebook-square(aria-hidden="true")
+          //br
+          //i A human with no extraordinary powers
           div.modal#my-modal
            div.modal-dialog
              div.modal-content#modal-content
@@ -58,10 +93,16 @@ block content
                  //button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
                div.modal-body#modal-body
                  img.img-responsive(src='images/logo.png')
-                 hr
-                 form.form-horizontal#form-sign-up(action="http://localhost:8001/users/new",name="regis-form",onsubmit="return validateForm()")
+                 span
+                    h2(style="color:rgb(167, 167, 167)")
+                      i Treat. Yo. Self.
+                 hr(style="display:block;border-top:2px solid #173e43;")
+                 //hr(style="display:block;border-top:4px solid #173e43;")
+                 h5#error(style="margin-bottom:20px;color:rgb(214, 44, 26);")
+                 form.form-horizontal#form-sign-up(action="http://localhost:8000/users/new",name="regis-form",onsubmit="return validateForm()")
+
                    fieldset
-                     h5#error(style="margin-bottom:5px;color:rgb(214, 44, 26);")
+
                      div.form-group
                        label.col-lg-2.control-label(for="Email") Email
                        div.col-lg-8
@@ -73,6 +114,7 @@ block content
                        label.col-lg-2.control-label(for="Username") Username
                        div.col-lg-8
                          input.form-control#input_username(name="user",type="text",placeholder="Username")
+
                      div.form-group
                        label.col-lg-2.control-label(for="Password") Password
                        div.col-lg-8
@@ -81,7 +123,49 @@ block content
                        label.col-lg-2.control-label(for="Confirm Password") Re-enter Password
                        div.col-lg-8
                          input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
-                     hr
+
                      div.form-group
                        div.col-lg-8
-                         button.btn.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH
+                         button.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH
+                         div.modal#my-modal
+                          div.modal-dialog
+                            div.modal-content#modal-content
+                              //div.modal-header#modal-head
+                                //img.img-responsive(src='images/logo.png')
+                                //button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+                              div.modal-body#modal-body
+                                img.img-responsive(src='images/logo.png')
+                                span
+                                   h2(style="color:rgb(167, 167, 167)")
+                                     i Treat. Yo. Self.
+                                hr(style="display:block;border-top:2px solid #173e43;")
+                                //hr(style="display:block;border-top:4px solid #173e43;")
+                                h5#error(style="margin-bottom:20px;color:rgb(214, 44, 26);")
+                                form.form-horizontal#form-sign-up(action="http://localhost:8000/users/new",name="regis-form",onsubmit="return validateForm()")
+
+                                  fieldset
+
+                                    div.form-group
+                                      label.col-lg-2.control-label(for="Email") Email
+                                      div.col-lg-8
+
+                                        input.form-control#input_email(name="email",type="email",placeholder="Email")
+
+
+                                    div.form-group
+                                      label.col-lg-2.control-label(for="Username") Username
+                                      div.col-lg-8
+                                        input.form-control#input_username(name="user",type="text",placeholder="Username")
+
+                                    div.form-group
+                                      label.col-lg-2.control-label(for="Password") Password
+                                      div.col-lg-8
+                                        input.form-control#input_password(name="pass",type="password",placeholder="Password")
+                                    div.form-group
+                                      label.col-lg-2.control-label(for="Confirm Password") Re-enter Password
+                                      div.col-lg-8
+                                        input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
+
+                                    div.form-group
+                                      div.col-lg-8
+                                       button.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH

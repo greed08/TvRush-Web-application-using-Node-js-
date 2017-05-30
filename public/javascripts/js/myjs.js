@@ -23,10 +23,75 @@ var scroll_start = 0;
      $('#my-modal').modal('show');
 
    });
+   $('#sign_in').click(function()
+ {
+     $('#my-modal2').modal('show');
+ });
+
+/*-----------------------Login*/
+  $('#sign-in').on('click',authenticateUser);
+  function authenticateUser(event)
+  {
+    event.preventDefault();
+    var user=$('#input_user').val();
+    var pass=$('#input_pass').val();
+    var action=$('#form-sign-in').attr('action');
+    console.log(action);
+    if(authenticate(user,pass)==true)
+    {
+      var user_exist={
+        username:user,
+        password:pass
+      };
+
+      $.ajax({
+        url:action,
+        type:'POST',
+        data:user_exist,
+
+        dataType:'JSON',
+        success:function(msg)
+        {
+
+           console.log(msg.message);
+           console.log(msg.retstatus);
 
 
+        },
+        error:function(error)
+        {
+           throw error;
+          $('#err').html('Internal server error!!!Patience');
+        }
+      });
+    }
 
-/*Form data-sending to server using ajax */
+
+  }
+function authenticate(user,pass)
+{
+  if(user==='')
+  {
+    $('#err').html('Please enter username');
+    $('#input_user').focus();
+    return false;
+  }
+  if(pass==='')
+  {
+    $('#err').html('Please enter password');
+    $('#input_pass').focus();
+    return false;
+  }
+  return true;
+}
+
+/*-------------------------------*/
+
+/*Form data-sending to server using ajax
+
+REGISTRAION
+
+*/
    $('#sign-up').on('click',adduser);
 
    function adduser(event)
@@ -65,9 +130,9 @@ var scroll_start = 0;
         dataType:'JSON',
         success:function(msg)
         {
-          if(msg.success)
+          if(msg.retStatus)
           {
-          console.log('sent successfuly');
+          $('#error').html(msg.message);
           $('#input_email').val('');
           $('#input_username').val('');
           $('#input_password').val('');
@@ -115,7 +180,7 @@ function form_validate(email,username,password,password_again)
   if(password==='')
   {
   $('#error').html('Please enter the password');
-  $('input_password').focus();
+  $('#input_password').focus();
   return false;
  }
  if(password.length<6)
@@ -126,7 +191,7 @@ function form_validate(email,username,password,password_again)
   if(password_again==='')
   {
   $('#error').html('Please re-enter password');
-  $('confirm_password').focus();
+  $('#confirm_password').focus();
   return false;
  }
 else if(password!==''||password_again!=='')
@@ -145,6 +210,52 @@ else if(password!==''||password_again!=='')
 }
  return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    /*else {
      var email=$('#input_email').val();

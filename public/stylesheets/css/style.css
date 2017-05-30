@@ -1,7 +1,7 @@
-body {
+body,html {
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+   background-color:#000;
 }
 #modal-body
 {
@@ -11,6 +11,8 @@ body {
 
 
 }
+
+
 .control-label
 {
   color:#173e43;
@@ -18,12 +20,17 @@ body {
 a {
   color: #000;
 }
+#error
+{
+  font-family: 'Oswald', sans-serif;
+}
 #my-modal
 {
-
+  border-radius: 10px;
   font-family: 'Oswald', sans-serif;
 
 }
+
 #modal-head
 {
   background-color:#fff;
@@ -124,6 +131,7 @@ footer
  text-align: center;
  background-color:#000;
  height:50px;
+ margin-top:23px;
 }
 
 #subhead

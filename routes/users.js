@@ -4,17 +4,68 @@ var express = require('express');
 var bcrypt=require('bcrypt-nodejs');
 var router = express.Router();
 var util=require('util');
+router.get('/profile',function(req,res)
+{
+  res.render('user_profile');
+});
 router.post('/login',function(req,res)
 {
+  var sess=req.session;
+  var ses_user='';
   if(req.xhr || req.accepts('json,html')==='json'){
     var form_data=req.body;
     var user=form_data['username'];
     var pass=form_data['password'];
-    console.log(user);
-    res.send({success:true})
+   //console.log(pass);
+    //res.send({success:true})
+    var msg='';
+    var success=false;
+    User.findOne({'username':user},function(error,user)
+  {
+      if(error)
+      util.log(error);
+      if(user)
+      {
+        if(bcrypt.compareSync(pass,user.password)==true)
+        {
+              util.log(user.email);
+              msg='You exist in our database,You will be redirected to profile page';
+            ses_user=sess.user=user.username;
+                  res.redirect('/profile');
+              util.log('Session user is '+req.session.user);
+              success=true;
+
+        }
+        else {
+          msg='Wrong Password';
+          success=true;
+          res.json({
+            message:msg,
+            success:success,
+            session:ses_user
+          });
+        }
+
+
+    }
+      if(!user)
+      {
+        msg='You do not exist in our database';
+        success=true;
+        res.json({
+          message:msg,
+          success:success,
+          session:ses_user
+        });
+      }
+
+  });
+
 
   }
 });
+
+
 router.post('/new',function(req,res)
 {
   if(req.xhr || req.accepts('json,html')==='json'){
@@ -45,11 +96,11 @@ router.post('/new',function(req,res)
            util.log('Successfully created a new user with username :'+username);
            message='Successfully registered,You will be redirected to profile page';
            retStatus='success';
-          // req.session.username=savedUser;
+          req.session.user=savedUser.username;
 
+          console.log('Session create '+req.session.user);
 
-
-
+          //  res.redirect('/profile');
 
 
         /*  req.session.user=email;
@@ -63,11 +114,12 @@ router.post('/new',function(req,res)
             message="User already exists";
           }
           retStatus="failure";
+          res.json({
+            'retStatus':retStatus,
+            'message':message
+          });
         }
-        res.json({
-          'retStatus':retStatus,
-          'message':message
-        });
+
 
       });
 

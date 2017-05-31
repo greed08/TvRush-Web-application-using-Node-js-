@@ -3,6 +3,7 @@ var db=require('./model/db');
 var path = require('path');
 var passport=require('passport')
 , FacebookStrategy=require('passport-facebook').Strategy;
+var session=require('express-session');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -10,8 +11,16 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+// Session secret
+
 var app = express();
 // view engine setup
+app.use(session({
+  secret:'Iamahumanwithnoextraordinarypowers',
+  resave:false,
+  saveUninitialized:true
+
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public

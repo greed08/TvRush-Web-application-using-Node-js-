@@ -11,7 +11,10 @@ body,html {
 
 
 }
-
+.label_sign
+{
+  font-family: 'Oswald', sans-serif;
+}
 
 .control-label
 {
@@ -20,10 +23,11 @@ body,html {
 a {
   color: #000;
 }
-#error
+#error,#err
 {
   font-family: 'Oswald', sans-serif;
 }
+
 #my-modal
 {
   border-radius: 10px;

@@ -52,11 +52,17 @@ var scroll_start = 0;
         dataType:'JSON',
         success:function(msg)
         {
+          if(msg.success)
+          {
+           console.log('sent');
+           $('#err').html(msg.message);
+          
+           $('#input_user').val('');
+           $('#input_pass').val('');
 
-           console.log(msg.message);
-           console.log(msg.retstatus);
-
-
+        }
+          else
+          alert('Form not submitted');
         },
         error:function(error)
         {

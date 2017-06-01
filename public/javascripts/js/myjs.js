@@ -29,8 +29,9 @@ var scroll_start = 0;
  });
 /*----Log out -------*/
 $('#log_out').on('click',logout);
-function logout()
+function logout(event)
 {
+  event.preventDefault();
   window.location.href='http://localhost:8000/users/logout'
 }
 /*-----------------------Login*/
@@ -57,24 +58,36 @@ function logout()
         dataType:'JSON',
         success:function(msg)
         {
-          if(msg.success)
+          if(msg.success==true)
           {
            console.log('sent');
            $('#err').html(msg.message);
             
            if(msg.session_user!==''||msg.session_user!==undefined)
+           {
+             $('#err').html(msg.message);
             window.location.href="http://localhost:8000/users/profile/";
            $('#input_user').val('');
            $('#input_pass').val('');
+         }
+          
+
 
         }
-          else
-           $('#err').html('Error!!');
-        },
+         else if(msg.success===false)
+         {
+          $('#err').html(msg.message);
+          $('#input_user').val('');
+           $('#input_pass').val('');
+        }
+        
+    },
+         
+
         error:function(error)
         {
            throw error;
-          $('#err').html('Internal server error!!!Patience');
+          $('#err').html('Server error!');
         }
       });
     }
@@ -146,7 +159,7 @@ REGISTRAION
         dataType:'JSON',
         success:function(msg)
         {
-          if(msg.retStatus)
+          if(msg.retStatus==true)
           {
           $('#error').html(msg.message);
            if(msg.session_user!==''||msg.session_user!==undefined)
@@ -157,10 +170,21 @@ REGISTRAION
           $('#confirm_password').val('');
 
         }
-          else
-          $('#error').html('Error occured');
+       else if(msg.retStatus===false)
+        {
+           console.log('falseee');
+           $('#error').html(msg.message);
+           $('#input_email').val('');
+          $('#input_username').val('');
+          $('#input_password').val('');
+          $('#confirm_password').val('');
+
+        }
+
+          /*else
+          $('#error').html('Error occured');*/
         },
-        error:function()
+        error:function(error)
         {
           $('#error').html('Internal server error!!!Patience');
         }

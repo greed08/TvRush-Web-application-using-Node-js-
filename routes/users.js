@@ -32,11 +32,11 @@ router.post('/login',function(req,res)
     var pass=form_data['password'];
    //console.log(pass);
     //res.send({success:true})
-    
+    var ses_user='';var msg='';
+    var success=false;
     User.findOne({'username':user},function(error,user)
   {
-     var ses_user='';var msg='';
-    var success=false;
+     
       if(error)
       util.log(error);
       if(user)
@@ -48,39 +48,41 @@ router.post('/login',function(req,res)
               ses_user=req.session.user=user.username;
                  
               util.log('Session user is '+ses_user);
-              req.params.user=ses_user;
+            
               success=true;
 
         }
-        else {
+        else 
+        {
+
           msg='Wrong Password';
-          success=true;
+          success=false;
           ses_user='';
          
         }
-          res.json({
+         res.json({
           message:msg,
           success:success,
           session_user:ses_user
         });
 
-
     }
-      if(!user)
+    else  if(!user)
       {
         msg='You do not exist in our database';
         success=true;
         ses_user='';
-        res.json({
+       res.json({
           message:msg,
           success:success,
           session_user:ses_user
         });
-       
-      }
-     
 
+      }
+      
+      
   });
+
 
 
   }
@@ -108,6 +110,7 @@ router.post('/new',function(req,res)
         var message='';
         var retSattus='';
         var session_user='';
+        var error_code='';
       /*  if(err)
         {
 
@@ -117,13 +120,18 @@ router.post('/new',function(req,res)
         if(!err) {
            util.log('Successfully created a new user with username :'+username);
            message='Successfully registered,You will be redirected to profile page';
-           retStatus='true';
+           retStatus=true;
           req.session.user=savedUser.username;
 
           console.log('Session create '+req.session.user);
 
          
-
+           res.json({
+            'retStatus':retStatus,
+            'message':message,
+            'session_user':req.session.user,
+            'error_code':null
+          });
 
         /*  req.session.user=email;
 
@@ -134,20 +142,44 @@ router.post('/new',function(req,res)
           if(err.code===11000)
           {
             message="User already exists";
-          }
-          retStatus="true";
-         
-        }
-         res.json({
+             retStatus=false;
+            error_code=err;
+             /* res.json({
             'retStatus':retStatus,
             'message':message,
-            'session_user':req.session.user
+            'session_user':req.session.user,
+            'error_code':error_code
+          });*/
+          }
+          else
+          {
+            message="Error occured!!";
+            retStatus=false;
+            error_code=util.inspect(err);
+            /*  res.json({
+            'retStatus':retStatus,
+            'message':message,
+            'session_user':req.session.user,
+            'error_code':error_code
+          });*/
+          }
+           res.json({
+            'retStatus':retStatus,
+            'message':message,
+            'session_user':req.session.user,
+            'error_code':error_code
           });
+         
+        }
+        
+      
 
 
       });
+  
 
 
+        
 
       }
       else {

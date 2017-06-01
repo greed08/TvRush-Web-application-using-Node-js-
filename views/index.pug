@@ -1,122 +1,122 @@
 extends layout
 block content
-   message=message
-   div.modal#my-modal2
-    div.modal-dialog
-      div.modal-content
-        div.modal-body(style="background-color:#dddfd4;")
-          img.img-responsive(src="images/logo.png")
-          span
-            h2(style="color:rgb(167,167,167);text-align:center;")
-              i How you doin'?
-          hr
-          h5#err(style="margin-bottom:20px;color:rgb(214, 44, 26);text-align:center;")
-          form.form-horizontal#form-sign-in(action="http://localhost:8000/users/login")
-            fieldset
-              div.form-group
-                label.col-lg-2.control-label.label_sign(for='input_userName') Username
-                div.col-lg-8
-                  input.form-control#input_user(type="text",placeholder="Enter username")
-              div.form-group
-                label.col-lg-2.control-label.label_sign(for='input_passWord') Password
-                div.col-lg-8
-                  input.form-control#input_pass(type="password",placeholder="Enter password")
-              div.form-group
-                div.col-lg-8
-                  button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
+	message=message
+	div.modal#my-modal2
+		div.modal-dialog
+			div.modal-content
+				div.modal-body(style="background-color:#dddfd4;")
+					img.img-responsive(src="images/logo.png")
+					span
+						h2(style="color:rgb(167,167,167);text-align:center;")
+							i How you doin'?
+					hr
+					h5#err(style="margin-bottom:20px;color:rgb(214, 44, 26);text-align:center;")
+					form.form-horizontal#form-sign-in(action="http://localhost:8000/users/login")
+						fieldset
+							div.form-group
+								label.col-lg-2.control-label.label_sign(for='input_userName') Username
+								div.col-lg-8
+									input.form-control#input_user(type="text",placeholder="Enter username")
+							div.form-group
+								label.col-lg-2.control-label.label_sign(for='input_passWord') Password
+								div.col-lg-8
+									input.form-control#input_pass(type="password",placeholder="Enter password")
+							div.form-group
+								div.col-lg-8
+									button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
 
 
-   nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
-    div.container-fluid
-      div.navbar-header
-        button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
-          img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
+	nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
+		div.container-fluid
+			div.navbar-header
+				button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
+					img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
 
 
-      div.collapse.navbar-collapse#bs-example-navbar-collapse-1
-        ul.nav.navbar-nav#menu-items
-          li
-            a(href="#") HOME
-          li
-            a(href="TV") TV
-          li
-            a(href="#") ABOUT
-          li
-            a(href="#") CONTACTS
-          li
-            a#sign_in(href="#") SIGN IN
-        form.navbar-form.navbar-right(role="search")
+			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+				ul.nav.navbar-nav#menu-items
+					li
+						a(href="#") HOME
+					li
+						a(href="TV") TV
+					li
+						a(href="#") ABOUT
+					li
+						a(href="#") CONTACTS
+					li
+						a#sign_in(href="#") SIGN IN
+				form.navbar-form.navbar-right(role="search")
 
 
-            input(type="search",placeholder="Search")
+					input(type="search",placeholder="Search")
 
 
 
 
-   header#myCarousel.carousel.slide
-    div.carousel-inner
-      div.item.active
-        div.fill#first-image
+	header#myCarousel.carousel.slide
+		div.carousel-inner
+			div.item.active
+				div.fill#first-image
 
-        div.carousel-caption
+				div.carousel-caption
 
-          h1#heading Track what you're watching.
-          h3#subhead Find your favourite tv shows
-          button.btn-warning#join JOIN TV RUSH
+					h1#heading Track what you're watching.
+					h3#subhead Find your favourite tv shows
+					button.btn-warning#join JOIN TV RUSH
 
-   footer#foot
+	footer#foot
 
-    div
+		div
 
-      span
-        p Developed and Designed By:Greed&nbsp
-          a(href="https://github.com/greed08")
-            i.fa.fa-github(aria-hidden="true")
-          a(href="https://www.facebook.com/greeed08",style="padding-left:5px;")
-            i.fa.fa-facebook-square(aria-hidden="true")
-          //br
-          //i A human with no extraordinary powers
-          div.modal#my-modal
-           div.modal-dialog
-             div.modal-content#modal-content
-               div.modal-body#modal-body
-                 img.img-responsive(src='images/logo.png')
-                 span
-                    h2(style="color:rgb(167, 167, 167)")
-                      i Treat. Yo. Self.
-                 hr(style="display:block;border-top:2px solid #173e43;")
-                 //hr(style="display:block;border-top:4px solid #173e43;")
-                 h5#error(style="margin-bottom:20px;color:rgb(214, 44, 26);")
-                 form.form-horizontal#form-sign-up(action="http://localhost:8000/users/new",name="regis-form",onsubmit="return validateForm()")
+			span
+				p Developed and Designed By:Greed&nbsp
+					a(href="https://github.com/greed08")
+						i.fa.fa-github(aria-hidden="true")
+					a(href="https://www.facebook.com/greeed08",style="padding-left:5px;")
+						i.fa.fa-facebook-square(aria-hidden="true")
+					//br
+					//i A human with no extraordinary powers
+					div.modal#my-modal
+						div.modal-dialog
+							div.modal-content#modal-content
+								div.modal-body#modal-body
+									img.img-responsive(src='images/logo.png')
+									span
+										h2(style="color:rgb(167, 167, 167)")
+											i Treat. Yo. Self.
+									hr(style="display:block;border-top:2px solid #173e43;")
+									//hr(style="display:block;border-top:4px solid #173e43;")
+									h5#error(style="margin-bottom:20px;color:rgb(214, 44, 26);")
+									form.form-horizontal#form-sign-up(action="http://localhost:8000/users/new",name="regis-form",onsubmit="return validateForm()")
 
-                   fieldset
+										fieldset
 
-                     div.form-group
-                       label.col-lg-2.control-label(for="Email") Email
-                       div.col-lg-8
+											div.form-group
+												label.col-lg-2.control-label(for="Email") Email
+												div.col-lg-8
 
-                         input.form-control#input_email(name="email",type="email",placeholder="Email")
+													input.form-control#input_email(name="email",type="email",placeholder="Email")
 
 
-                     div.form-group
-                       label.col-lg-2.control-label(for="Username") Username
-                       div.col-lg-8
-                         input.form-control#input_username(name="user",type="text",placeholder="Username")
+											div.form-group
+												label.col-lg-2.control-label(for="Username") Username
+												div.col-lg-8
+													input.form-control#input_username(name="user",type="text",placeholder="Username")
 
-                     div.form-group
-                       label.col-lg-2.control-label(for="Password") Password
-                       div.col-lg-8
-                         input.form-control#input_password(name="pass",type="password",placeholder="Password")
-                     div.form-group
-                       label.col-lg-2.control-label(for="Confirm Password") Re-enter Password
-                       div.col-lg-8
-                         input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
+											div.form-group
+												label.col-lg-2.control-label(for="Password") Password
+												div.col-lg-8
+													input.form-control#input_password(name="pass",type="password",placeholder="Password")
+											div.form-group
+												label.col-lg-2.control-label(for="Confirm Password") Re-enter Password
+												div.col-lg-8
+													input.form-control#confirm_password(name="pass_again",type="password",placeholder="Confirm Password")
 
-                     div.form-group
-                       div.col-lg-8
-                         button.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH
+											div.form-group
+												div.col-lg-8
+													button.btn-danger.btn-lg#sign-up(style="float:right;") JOIN TV RUSH

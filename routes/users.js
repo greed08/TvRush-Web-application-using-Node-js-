@@ -6,22 +6,37 @@ var router = express.Router();
 var util=require('util');
 router.get('/profile',function(req,res)
 {
-  res.render('user_profile');
+  
+  if(req.session.user===undefined||req.session.usr==='')
+    res.redirect('/');
+  else if(req.session.user!=='')
+  {
+  console.log(req.params.user);
+  res.render('user_profile',{session_user:req.session.user});
+  console.log('Session user is '+req.session.user);
+}
+});
+router.get('/logout',function(req,res)
+{
+  delete req.session.user;
+  req.flash('msg','You are successfully logging out');
+  res.redirect('/');
 });
 router.post('/login',function(req,res)
 {
   var sess=req.session;
-  var ses_user='';
+  
   if(req.xhr || req.accepts('json,html')==='json'){
     var form_data=req.body;
     var user=form_data['username'];
     var pass=form_data['password'];
    //console.log(pass);
     //res.send({success:true})
-    var msg='';
-    var success=false;
+    
     User.findOne({'username':user},function(error,user)
   {
+     var ses_user='';var msg='';
+    var success=false;
       if(error)
       util.log(error);
       if(user)
@@ -30,21 +45,24 @@ router.post('/login',function(req,res)
         {
               util.log(user.email);
               msg='You exist in our database,You will be redirected to profile page';
-            ses_user=sess.user=user.username;
-                  res.redirect('/profile');
-              util.log('Session user is '+req.session.user);
+              ses_user=req.session.user=user.username;
+                 
+              util.log('Session user is '+ses_user);
+              req.params.user=ses_user;
               success=true;
 
         }
         else {
           msg='Wrong Password';
           success=true;
-          res.json({
-            message:msg,
-            success:success,
-            session:ses_user
-          });
+          ses_user='';
+         
         }
+          res.json({
+          message:msg,
+          success:success,
+          session_user:ses_user
+        });
 
 
     }
@@ -52,12 +70,15 @@ router.post('/login',function(req,res)
       {
         msg='You do not exist in our database';
         success=true;
+        ses_user='';
         res.json({
           message:msg,
           success:success,
-          session:ses_user
+          session_user:ses_user
         });
+       
       }
+     
 
   });
 
@@ -69,7 +90,7 @@ router.post('/login',function(req,res)
 router.post('/new',function(req,res)
 {
   if(req.xhr || req.accepts('json,html')==='json'){
-
+     
         //var ty=typeof(req.body);
         //  console.log(ty);
          var form_data=req.body;
@@ -86,6 +107,7 @@ router.post('/new',function(req,res)
       {
         var message='';
         var retSattus='';
+        var session_user='';
       /*  if(err)
         {
 
@@ -95,12 +117,12 @@ router.post('/new',function(req,res)
         if(!err) {
            util.log('Successfully created a new user with username :'+username);
            message='Successfully registered,You will be redirected to profile page';
-           retStatus='success';
+           retStatus='true';
           req.session.user=savedUser.username;
 
           console.log('Session create '+req.session.user);
 
-          //  res.redirect('/profile');
+         
 
 
         /*  req.session.user=email;
@@ -113,12 +135,14 @@ router.post('/new',function(req,res)
           {
             message="User already exists";
           }
-          retStatus="failure";
-          res.json({
-            'retStatus':retStatus,
-            'message':message
-          });
+          retStatus="true";
+         
         }
+         res.json({
+            'retStatus':retStatus,
+            'message':message,
+            'session_user':req.session.user
+          });
 
 
       });

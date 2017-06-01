@@ -7,8 +7,10 @@ var session=require('express-session');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var flash=require('req-flash');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
+
 var users = require('./routes/users');
 
 // Session secret
@@ -21,6 +23,7 @@ app.use(session({
   saveUninitialized:true
 
 }));
+app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public

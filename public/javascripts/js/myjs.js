@@ -27,7 +27,12 @@ var scroll_start = 0;
  {
      $('#my-modal2').modal('show');
  });
-
+/*----Log out -------*/
+$('#log_out').on('click',logout);
+function logout()
+{
+  window.location.href='http://localhost:8000/users/logout'
+}
 /*-----------------------Login*/
   $('#sign-in').on('click',authenticateUser);
   function authenticateUser(event)
@@ -56,13 +61,15 @@ var scroll_start = 0;
           {
            console.log('sent');
            $('#err').html(msg.message);
-          
+            
+           if(msg.session_user!==''||msg.session_user!==undefined)
+            window.location.href="http://localhost:8000/users/profile/";
            $('#input_user').val('');
            $('#input_pass').val('');
 
         }
           else
-          alert('Form not submitted');
+           $('#err').html('Error!!');
         },
         error:function(error)
         {
@@ -93,7 +100,10 @@ function authenticate(user,pass)
 
 /*-------------------------------*/
 
+
 /*Form data-sending to server using ajax
+
+
 
 REGISTRAION
 
@@ -139,6 +149,8 @@ REGISTRAION
           if(msg.retStatus)
           {
           $('#error').html(msg.message);
+           if(msg.session_user!==''||msg.session_user!==undefined)
+            window.location.href="http://localhost:8000/users/profile/";
           $('#input_email').val('');
           $('#input_username').val('');
           $('#input_password').val('');
@@ -146,7 +158,7 @@ REGISTRAION
 
         }
           else
-          alert('Form not submitted');
+          $('#error').html('Error occured');
         },
         error:function()
         {

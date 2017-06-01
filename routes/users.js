@@ -156,20 +156,4 @@ router.post('/new',function(req,res)
 });
 module.exports = router;
 
-/* GET users listing.*/
-/*router.get('/', function(req, res, next) {
-  var name='Omkar',
-  email ='Omilpsablock@gmail.com';
 
-  var newUser = new User({
-  username: {name},
-  email: email,
-  lastLogin : Date.now()
-  }).save( function( err ){
-  if(!err){
-  console.log('User saved!');
-  }
-  });
-  res.send('respond with a resource');
-
-});*/

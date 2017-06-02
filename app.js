@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
 var users = require('./routes/users');
+var search=require('./routes/search');
 
 // Session secret
 
@@ -40,7 +41,7 @@ app.use(function(req,res,next){
     req.db = db;
     next();
 });
-
+app.use('/search',search);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

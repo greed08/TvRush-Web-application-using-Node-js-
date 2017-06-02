@@ -21,7 +21,40 @@ $(document).ready(function() {
 
         $('#my-modal').modal('show');
 
-    });
+    });/*----Search movies and tv shows */
+     $('#search').on('click',search_content);
+    function search_content(event)
+    {
+        event.preventDefault();
+        var query=$('#queryy').val();
+        var url="http://localhost:8000/search/"+query+"/";
+        window.location.href=url;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('#sign_in').click(function() {
         $('#my-modal2').modal('show');
     });
@@ -60,7 +93,8 @@ $(document).ready(function() {
 
                         if (msg.session_user !== '' || msg.session_user !== undefined) {
                             $('#err').html(msg.message);
-                            window.location.href = "http://localhost:8000/users/profile/";
+                            var url="http://localhost:8000/users/profile/"+msg.session_user+"/";
+                            window.location.href = url;
                             $('#input_user').val('');
                             $('#input_pass').val('');
                         }

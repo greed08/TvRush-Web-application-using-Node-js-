@@ -1,0 +1,28 @@
+extends layout
+block content
+
+	div.container#gallery 
+		h1 Showing search results...
+
+	script.
+		var result=!{JSON.stringify(result)};
+		for(var i =0;i<result.results.length;i++)
+		{
+		if(result.results[i].poster_path!=null&&(result.results[i].poster_path!=result.results[i+1].poster_path))
+			var img_path=result.results[i].poster_path;
+		else
+		  i++;
+
+
+			var div=$('<div class="container"></div>');
+
+			var url="http://image.tmdb.org/t/p/w300"+img_path;
+			var image=$('<img></img>');
+			image.addClass('img-responsive');
+			image.attr('src',url);
+			div.append(image);
+			$('#gallery').append(div);
+
+		console.log(url);
+		console.log(result.results[i].popularity)
+		}

@@ -9,7 +9,7 @@ router.get('/:query',function(req,res)
 {
   var query=req.params.query;
   var  search_result;
-  mdb.searchMovie({ query:query}, (err, response) => {
+  mdb.searchMovie({ query:query,video:true}, (err, response) => {
   search_result=response;
 
   res.render('movie_and_tv',{result:search_result});

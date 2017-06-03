@@ -1,28 +1,130 @@
 extends layout
 block content
+	div.modal#my-modal2
+		div.modal-dialog
+			div.modal-content
+				div.modal-body(style="background-color:#dddfd4;")
+					img.img-responsive(src="/images/logo.png")
+					span
+						h2(style="color:rgb(167,167,167);text-align:center;")
+							i How you doin'?
+					hr
+					h5#err(style="margin-bottom:20px;color:rgb(214, 44, 26);text-align:center;")
+					form.form-horizontal#form-sign-in(action="http://localhost:8000/users/login")
+						fieldset
+							div.form-group
+								label.col-lg-2.control-label.label_sign(for='input_userName') Username
+								div.col-lg-8
+									input.form-control#input_user(type="text",placeholder="Enter username")
+							div.form-group
+								label.col-lg-2.control-label.label_sign(for='input_passWord') Password
+								div.col-lg-8
+									input.form-control#input_pass(type="password",placeholder="Enter password")
+							div.form-group
+								div.col-lg-8
+									button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
 
+	nav.navbar.navbar-default.navbar#nav-bar(role="navigation")
+		div.container-fluid
+			div.navbar-header
+				button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
+					img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
+
+
+			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+				ul.nav.navbar-nav#menu-items
+					li
+						a(href="#") HOME
+					li
+						a(href="TV") TV
+					li
+						a(href="#") ABOUT
+					li
+						a(href="#") CONTACTS
+					li
+						a#sign_in(href="#") SIGN IN
+				form.navbar-form.navbar-right(role="search")
+
+
+					input#queryy(type="search",placeholder="Search")
+
+					btn.btn.btn-warning#search(style="border-radius:50%;margin-left:5px;") Search
 	div.container#gallery 
-		h1 Showing search results...
+		div.row.text-center
+			h1.white Showing search results..
+			br
+		div.row#show_result
 
 	script.
 		var result=!{JSON.stringify(result)};
 		for(var i =0;i<result.results.length;i++)
 		{
-		if(result.results[i].poster_path!=null&&(result.results[i].poster_path!=result.results[i+1].poster_path))
-			var img_path=result.results[i].poster_path;
-		else
-		  i++;
-
-
-			var div=$('<div class="container"></div>');
-
-			var url="http://image.tmdb.org/t/p/w300"+img_path;
+			var base_url="http://image.tmdb.org/t/p/w185";
+			var div4=$('<div class="well"></div>');
+			var div1=$('<div class="col-md-4 col-sm-6"></div>');
 			var image=$('<img></img>');
-			image.addClass('img-responsive');
-			image.attr('src',url);
-			div.append(image);
-			$('#gallery').append(div);
+			var head3=$('<h4></h4>');
+			var links=$('<span></span>');
+			var add_link=$('<a href="#"></a>');
+			var like_link=$('<a href="#"></a>');
+			var add=$('<i class="fa fa-plus-square fa-1.2x"></i>');
+			var like=$('<i class="fa fa-heart fa-1.2x"></i>');
+				add.css('color','#fff');
+				like.css('color','#d62c1a');
+				add_link.html(add);
+				like_link.html(like);
+				add_link.css('margin-left','7px');
+				like_link.css('margin-left','7px');
+				links.css('margin-left','7px');
 
-		console.log(url);
-		console.log(result.results[i].popularity)
+			$('#gallery').css('background-color','#694b0b');
+			$('#gallery').css('font-family','"Oswald", sans-serif');
+
+			var image_url='';
+
+			var more_info=$('<a href="#"></a>');
+			if(result.results[i].poster_path!==null){
+			image_url=base_url+result.results[i].poster_path;
+			console.log(image_url);
+			}
+			else
+			{
+			continue;
+			}
+			$('body').css('background-color','#694b0b');
+			image.attr('src',image_url);
+			var div2=$('<div></div>');
+			head3.html(result.results[i].original_title);
+			div4.css('width','280px');
+			div4.css('height','390px');
+			div4.css('background-color','#ae7b0e');
+			head3.append(add_link);
+			head3.append(like_link);
+			head3.append(links);
+			more_info.html('More info');
+			div1.css('font-family','"Oswald", sans-serif');
+			div2.css('font-family','"Oswald", sans-serif');
+			div4.css('font-family','"Oswald", sans-serif');
+			head3.css('font-family','"Oswald", sans-serif');
+			$('.white').css('font-family','"Oswald", sans-serif');
+			$('.white').css('text-align','left');
+
+
+			div2.append(head3);
+
+			div2.append(more_info);
+
+			div4.append(image);
+			div4.append(div2);
+
+			div1.append(div4);
+				
+			$('#show_result').append(div1);
+
+			console.log(result.results[i]);
 		}

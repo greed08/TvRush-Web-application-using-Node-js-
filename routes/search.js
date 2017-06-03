@@ -5,11 +5,25 @@ var bcrypt = require('bcrypt-nodejs');
 var router = express.Router();
 var util = require('util');
 const mdb= require('moviedb')('9c52a0af4fd256f7556d2b0ebd079ba8');
-router.get('/:query',function(req,res)
+router.get('/movies/:query',function(req,res)
 {
   var query=req.params.query;
   var  search_result;
+ 
   mdb.searchMovie({ query:query,video:true}, (err, response) => {
+  search_result=response;
+
+  res.render('movie_and_tv',{result:search_result});
+
+});
+ 
+});
+router.get('/tv/:query',function(req,res)
+{
+  var query=req.params.query;
+  var  search_result;
+ 
+  mdb.searchTv({ query:query,video:true}, (err, response) => {
   search_result=response;
 
   res.render('movie_and_tv',{result:search_result});

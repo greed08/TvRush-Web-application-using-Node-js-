@@ -41,9 +41,11 @@ block content
 			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
 				ul.nav.navbar-nav#menu-items
 					li
-						a(href="#") HOME
+						a(href="/") HOME
 					li
-						a(href="TV") TV
+						a(href="search/tv/batman") TV
+					li
+						a(href="search/movies/batman") MOVIES
 					li
 						a(href="#") ABOUT
 					li
@@ -52,7 +54,9 @@ block content
 						a#sign_in(href="#") SIGN IN
 				form.navbar-form.navbar-right(role="search")
 
-
+					select.form-control#tvormovie(data-style="btn-warning",style="margin-right:5px;background-color:transparent;color:#FFF;")
+						option(value="Tv series",style="color:#FFF;background-color:transparent;") Tv Series
+						option(value="Movies",style="color:#FFF") Movies
 					input#queryy(type="search",placeholder="Search")
 
 					btn.btn.btn-warning#search(style="border-radius:50%;margin-left:5px;") Search
@@ -68,7 +72,7 @@ block content
 				div.carousel-caption
 
 					h1#heading Track what you're watching.
-					h3#subhead Find your favourite tv shows
+					h3#subhead Find your favourite tv shows and movies!
 					button.btn-warning#join JOIN TV RUSH
 
 	footer#foot

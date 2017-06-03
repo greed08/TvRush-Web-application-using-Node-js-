@@ -27,7 +27,11 @@ $(document).ready(function() {
     {
         event.preventDefault();
         var query=$('#queryy').val();
-        var url="http://localhost:8000/search/"+query+"/";
+        var value=$('#tvormovie').val();
+        if(value==="Movies")
+        var url="http://localhost:8000/search/movies/"+query+"/";
+        else
+        var url="http://localhost:8000/search/tv/"+query+"/";
         window.location.href=url;
     }
 

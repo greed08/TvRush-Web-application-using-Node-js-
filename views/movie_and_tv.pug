@@ -54,7 +54,7 @@ block content
 					input#queryy(type="search",placeholder="Search")
 
 					btn.btn.btn-warning#search(style="border-radius:50%;margin-left:5px;") Search
-	div.container#gallery 
+	div.container#gal
 		div.row.text-center
 			h1.white Showing search results..
 			br
@@ -64,67 +64,69 @@ block content
 		var result=!{JSON.stringify(result)};
 		for(var i =0;i<result.results.length;i++)
 		{
-			var base_url="http://image.tmdb.org/t/p/w185";
-			var div4=$('<div class="well"></div>');
-			var div1=$('<div class="col-md-4 col-sm-6"></div>');
-			var image=$('<img></img>');
-			var head3=$('<h4></h4>');
-			var links=$('<span></span>');
-			var add_link=$('<a href="#"></a>');
-			var like_link=$('<a href="#"></a>');
-			var add=$('<i class="fa fa-plus-square fa-1.2x"></i>');
-			var like=$('<i class="fa fa-heart fa-1.2x"></i>');
-				add.css('color','#fff');
-				like.css('color','#d62c1a');
-				add_link.html(add);
-				like_link.html(like);
-				add_link.css('margin-left','7px');
-				like_link.css('margin-left','7px');
-				links.css('margin-left','7px');
-
-			$('#gallery').css('background-color','#694b0b');
-			$('#gallery').css('font-family','"Oswald", sans-serif');
-
-			var image_url='';
-
-			var more_info=$('<a href="#"></a>');
-			if(result.results[i].poster_path!==null){
-			image_url=base_url+result.results[i].poster_path;
-			console.log(image_url);
-			}
-			else
+			var gal=$('<div></div>');
+			gal.addClass('gallery');
+			var description=$('<div></div>');
+			description.addClass('desc');
+			gal.css('margin','5px');
+			gal.css('border','1px solid #ccc');
+			gal.css('float','left');
+			gal.css('width','185px');
+			gal.hover(function()
 			{
-			continue;
-			}
-			$('body').css('background-color','#694b0b');
-			image.attr('src',image_url);
-			var div2=$('<div></div>');
-			head3.html(result.results[i].original_title);
-			div4.css('width','280px');
-			div4.css('height','390px');
-			div4.css('background-color','#ae7b0e');
-			head3.append(add_link);
-			head3.append(like_link);
-			head3.append(links);
-			more_info.html('More info');
-			div1.css('font-family','"Oswald", sans-serif');
-			div2.css('font-family','"Oswald", sans-serif');
-			div4.css('font-family','"Oswald", sans-serif');
-			head3.css('font-family','"Oswald", sans-serif');
-			$('.white').css('font-family','"Oswald", sans-serif');
-			$('.white').css('text-align','left');
+				$(this).css('border','1px solid #777');
+			});
+			description.css('padding','15px');
+			description.css('text-align','center');
+			description.css('background-color','#333');
+			gal.css('background-color','#333');
 
 
-			div2.append(head3);
 
-			div2.append(more_info);
 
-			div4.append(image);
-			div4.append(div2);
 
-			div1.append(div4);
-				
-			$('#show_result').append(div1);
 
-			console.log(result.results[i]);
+
+
+				var base_url="http://image.tmdb.org/t/p/w185";
+
+				var image=$('<img></img>');
+
+				var links=$('<span></span>');
+				var add_link=$('<a href="#"></a>');
+				var like_link=$('<a href="#"></a>');
+				var add=$('<i class="fa fa-plus-square fa-1.2x"></i>');
+				var like=$('<i class="fa fa-heart fa-1.2x"></i>');
+					add.css('color','#fff');
+					like.css('color','#d62c1a');
+					add_link.html(add);
+					like_link.html(like);
+					add_link.css('margin-left','7px');
+					like_link.css('margin-left','7px');
+					links.css('margin-left','7px');
+
+				$('#gallery').css('background-color','#694b0b');
+				$('#gallery').css('font-family','"Oswald", sans-serif');
+
+				var image_url='';
+
+				var more_info=$('<a href="#">More Info</a>');
+				if(result.results[i].poster_path!==null){
+				image_url=base_url+result.results[i].poster_path;
+				console.log(image_url);
+				}
+				else
+				{
+				continue;
+				}
+				$('body').css('background-color','#694b0b');
+				image.attr('src',image_url);
+				description.append(links);
+				gal.append(image);
+				gal.append(add_link);
+				gal.append(like_link);
+				gal.append(more_info);
+				$('#show_result').append(gal);
+
+				console.log(result.results[i]);
 		}

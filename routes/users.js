@@ -4,12 +4,12 @@ var express = require('express');
 var bcrypt = require('bcrypt-nodejs');
 var router = express.Router();
 var util = require('util');
-router.get('/profile/:user', function(req, res) {
+router.get('/profile', function(req, res) {
 
     if (req.session.user === undefined || req.session.usr === '')
         res.redirect('/');
-    else if (req.session.user !== '') {
-        console.log(req.params.user);
+    else if (req.session.user !== ''||req.session.user!== undefined) {
+        console.log('sjhgsdjahghjsedg'+req.params.user);
         res.render('user_profile', {
             session_user: req.session.user
         });

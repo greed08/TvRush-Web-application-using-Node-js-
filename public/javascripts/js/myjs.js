@@ -15,6 +15,49 @@ $(document).ready(function() {
     }
 
 
+
+  $('.likes').on('click',function(event)
+{
+  event.preventDefault();
+
+
+});
+$('.add_to_watchlist').on('click',function(event)
+{
+  event.preventDefault();
+  var id_=$('.add_to_watchlist').parent();
+  var img_src=$('.add_to_watchlist').prev('img').attr('src');
+  console.log(id_);
+
+});
+$('.add_to_wishlist').on('click',function(event)
+{
+  alert('Added to wishlist');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('#join').click(function() {
 
 
@@ -34,7 +77,6 @@ $(document).ready(function() {
         var url="http://localhost:8000/search/tv/"+query+"/";
         window.location.href=url;
     }
-
 
 
 
@@ -97,7 +139,7 @@ $(document).ready(function() {
 
                         if (msg.session_user !== '' || msg.session_user !== undefined) {
                             $('#err').html(msg.message);
-                            var url="http://localhost:8000/users/profile/"+msg.session_user+"/";
+                            var url="http://localhost:8000/users/profile/";
                             window.location.href = url;
                             $('#input_user').val('');
                             $('#input_pass').val('');
@@ -186,7 +228,7 @@ $(document).ready(function() {
                     if (msg.retStatus == true) {
                         $('#error').html(msg.message);
                         if (msg.session_user !== '' || msg.session_user !== undefined)
-                            window.location.href = "http://localhost:8000/users/profile/";
+                            window.location.href = "http://localhost:8000/users/profile";
                         $('#input_email').val('');
                         $('#input_username').val('');
                         $('#input_password').val('');

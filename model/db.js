@@ -23,6 +23,42 @@ var Userdata=new mongoose.Schema({
   password:{type:String,unique:true},
   createdOn:{type:Date,default:Date.now},
   modifiedOn:Date,
-  lastLogin:Date
+  lastLogin:Date,
+  likeTv:[{
+    tvTitle:{type:String},
+    tvImage:{type:String},
+    tvOverview:{type:String}
+  }],
+  likeMovie:[
+    {
+      movieTitle:{type:String},
+      movieImage:{type:String},
+      movieOverview:{type:String}
+    }
+  ],
+  watchlistTv:[
+    {
+      tvTitle:{type:String},
+      tvImage:{type:String},
+      tvOverview:{type:String}
+    }
+  ],
+  watchlistMovie:[
+    {
+      movieTitle:{type:String},
+      movieImage:{type:String},
+      movieOverview:{type:String}
+    }
+  ],
+  wishlistTv:[{
+    tvTitle:{type:String},
+    tvImage:{type:String},
+    tvOverview:{type:String}
+  }],
+  wishlistMovie:[{
+    movieTitle:{type:String},
+    movieImage:{type:String},
+    movieOverview:{type:String}
+  }]
 });
 mongoose.model('User',Userdata);

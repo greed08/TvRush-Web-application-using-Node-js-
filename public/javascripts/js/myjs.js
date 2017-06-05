@@ -19,20 +19,161 @@ $(document).ready(function() {
   $('.likes').on('click',function(event)
 {
   event.preventDefault();
+  var value=$('#tvormovie').val();
+      console.log(value);
+  var img_src=$(this).prev().prev('span').attr('id');
+  var overview=$(this).prev().prev('span').html();
+  var title=$(this).prev().prev('span').attr('class');
+  var eve=$(this).attr('class');
+  var url;
+url='http://localhost:8000/search/response';
+  var info={
+    tv_or_movie:value,
+    eve:eve,
+    img_src:img_src,
+    title:title,
+    overview:overview
+  };
+  $.ajax({
+      url:url,
+      type: 'POST',
+      data: info,
+
+      dataType: 'JSON',
+      success: function(msg) {
+                if(msg.success){
+                console.log('sent  data');
+              }
+
+
+
+
+
+      },
+
+
+      error: function(error) {
+
+      }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
 $('.add_to_watchlist').on('click',function(event)
 {
+
   event.preventDefault();
-  var id_=$('.add_to_watchlist').parent();
-  var img_src=$('.add_to_watchlist').prev('img').attr('src');
-  console.log(id_);
+    var value=$('#tvormovie').val();
+        console.log(value);
+  var img_src=$(this).prev('span').attr('id');
+  var overview=$(this).prev('span').html();
+  var title=$(this).prev('span').attr('class');
+  var eve=$(this).attr('class');
+var url='http://localhost:8000/search/response';
+  var info={
+    tv_or_movie:value,
+    eve:eve,
+    img_src:img_src,
+    title:title,
+    overview:overview
+  };
+  $.ajax({
+      url:url,
+      type: 'POST',
+      data: info,
+
+      dataType: 'JSON',
+      success: function(msg) {
+                if(msg.success){
+                console.log('sent  data');
+              }
+
+
+
+
+
+      },
+
+
+      error: function(error) {
+
+      }
+  });
+
 
 });
 $('.add_to_wishlist').on('click',function(event)
 {
-  alert('Added to wishlist');
+  event.preventDefault();
+    var value=$('#tvormovie').val();
+    console.log(value);
+  var img_src=$(this).prev().prev().prev('span').attr('id');
+  var overview=$(this).prev().prev().prev('span').html();
+  var title=$(this).prev().prev().prev('span').attr('class');
+  var eve=$(this).attr('class');
+  url='http://localhost:8000/search/response';
+
+  var info={
+    tv_or_movie:value,
+    eve:eve,
+    img_src:img_src,
+    title:title,
+    overview:overview
+  };
+  $.ajax({
+      url:url,
+      type: 'POST',
+      data: info,
+
+      dataType: 'JSON',
+      success: function(msg) {
+                if(msg.success){
+                console.log('sent data');
+              }
+
+
+
+
+
+      },
+
+
+      error: function(error) {
+
+      }
+  });
+
+
 });
 
 

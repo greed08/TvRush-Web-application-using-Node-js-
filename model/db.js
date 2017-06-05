@@ -31,32 +31,32 @@ var Userdata=new mongoose.Schema({
   }],
   likeMovie:[
     {
-      movieTitle:{type:String},
+
       movieImage:{type:String},
       movieOverview:{type:String}
     }
   ],
   watchlistTv:[
     {
-      tvTitle:{type:String},
+
       tvImage:{type:String},
       tvOverview:{type:String}
     }
   ],
   watchlistMovie:[
     {
-      movieTitle:{type:String},
+
       movieImage:{type:String},
       movieOverview:{type:String}
     }
   ],
   wishlistTv:[{
-    tvTitle:{type:String},
+
     tvImage:{type:String},
     tvOverview:{type:String}
   }],
   wishlistMovie:[{
-    movieTitle:{type:String},
+  
     movieImage:{type:String},
     movieOverview:{type:String}
   }]

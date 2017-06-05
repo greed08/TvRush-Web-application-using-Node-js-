@@ -9,11 +9,36 @@ router.post('/response',function(req,res)
 {
   if (req.xhr || req.accepts('json,html') === 'json') {
     var data=req.body;
-    console.log('You targetted '+data.img_src);
+    var msg='';
+    console.log('You targetted '+data.title);
     console.log('tv or movie '+data.tv_or_movie);
     console.log('your action was '+data.eve);
 
    console.log('session user is'+req.session.user);
+   if(req.session.user===undefined)
+   {
+   msg='Please login first!!';
+
+ }
+   else {
+     if(data.eve==='likes')
+     msg="You liked "+data.title+"!!";
+
+   if(data.eve==='add_to_wishlist')
+      {
+
+        msg='Added '+data.title+' to your wishlist!!';
+      }
+      if(data.eve==='add_to_watchlist')
+      {
+        msg='Added '+data.title+ ' to your watched history!!';
+      }
+
+    }
+      res.json({
+        success:true,
+        msg:msg
+      });
 
 
 
@@ -24,9 +49,8 @@ router.post('/response',function(req,res)
 
 
 
-    res.json({
-      success:true
-    });
+
+
   }
 });
 

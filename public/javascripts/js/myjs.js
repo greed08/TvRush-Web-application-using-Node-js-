@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#msg').hide();
     var scroll_start = 0;
     var startchange = $('#nav-bar');
     var offset = startchange.offset();
@@ -18,6 +19,8 @@ $(document).ready(function() {
 
   $('.likes').on('click',function(event)
 {
+  $('#msg').hide();
+
   event.preventDefault();
   var value=$('#tvormovie').val();
       console.log(value);
@@ -32,7 +35,8 @@ url='http://localhost:8000/search/response';
     eve:eve,
     img_src:img_src,
     title:title,
-    overview:overview
+    overview:overview,
+    title:title
   };
   $.ajax({
       url:url,
@@ -43,6 +47,9 @@ url='http://localhost:8000/search/response';
       success: function(msg) {
                 if(msg.success){
                 console.log('sent  data');
+                $("#response").html(msg.msg);
+                $('#msg').fadeIn().delay(3000).fadeOut();
+
               }
 
 
@@ -116,6 +123,8 @@ var url='http://localhost:8000/search/response';
       success: function(msg) {
                 if(msg.success){
                 console.log('sent  data');
+                  $("#response").html(msg.msg);
+                  $('#msg').fadeIn().delay(3000).fadeOut();
               }
 
 
@@ -159,6 +168,8 @@ $('.add_to_wishlist').on('click',function(event)
       success: function(msg) {
                 if(msg.success){
                 console.log('sent data');
+                  $("#response").html(msg.msg);
+                  $('#msg').fadeIn().delay(3000).fadeOut();
               }
 
 
@@ -203,7 +214,11 @@ $('.add_to_wishlist').on('click',function(event)
 
 
 
-        $('#my-modal').modal('show');
+        $('#my-modal').fadeIn(1000).modal('show');
+        $(body).click(function()
+      {
+        $('#my-modal').fadeOut();
+      });
 
     });/*----Search movies and tv shows */
      $('#search').on('click',search_content);
@@ -243,7 +258,7 @@ $('.add_to_wishlist').on('click',function(event)
 
 
     $('#sign_in').click(function() {
-        $('#my-modal2').modal('show');
+        $('#my-modal2').fadeIn(1000).modal('show');
     });
     /*----Log out -------*/
     $('#log_out').on('click', logout);

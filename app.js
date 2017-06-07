@@ -2,7 +2,8 @@ var express = require('express');
 var db=require('./model/db');
 var path = require('path');
 var passport=require('passport')
-, FacebookStrategy=require('passport-facebook').Strategy;
+var cache=require('apicache').middleware;
+var FacebookStrategy=require('passport-facebook').Strategy;
 var session=require('express-session');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -18,6 +19,7 @@ var search=require('./routes/search');
 
 var app = express();
 // view engine setup
+app.use(cache('10 minutes'));
 app.use(session({
   secret:'Iamahumanwithnoextraordinarypowers',
   resave:false,

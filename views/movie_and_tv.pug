@@ -69,7 +69,7 @@ block content
 			div.modal-content
 				div.modal-body(style="background-color:#f6c20f;")
 					strong#response
-	div.container#gallery
+	div#gal
 
 	script.
 
@@ -101,13 +101,10 @@ block content
 			gal.css('margin','5px');
 			gal.css('border','1px solid #ccc');
 			gal.css('float','left');
-			gal.css('width','190px');
-			gal.css('height','320px');
+			gal.css('width','244px');
+			gal.css('height','310px');
 			
-			gal.hover(function()
-			{
-				$(this).css('border','1px solid #777');
-			});
+			
 
 			description.css('padding','15px');
 			description.css('text-align','center');
@@ -115,9 +112,10 @@ block content
 			description.css('height','30px');
 
 			gal.css('background-color','transparent');
-			gal.css('padding-top','4px');
+			gal.css('padding-top','0px');
+			gal.css('border','#a7a7a7 solid 2px');
 
-
+       
 
 
 
@@ -125,6 +123,7 @@ block content
 
 
 				var base_url="http://image.tmdb.org/t/p/w185";
+				$('#nav-bar2').css('margin-bottom','0px');
 
 				var image=$('<img></img>');
 
@@ -174,11 +173,19 @@ block content
 				image.attr('src',image_url);
 				description.append(links);
 				image.css('height','280px');
-				image.css('width','185px');
+				image.css('width','240px');
+				image.css('margin-top','0px');
 				image.attr('id',ids);
 				ids++;
 
 			  info.attr('id',result.results[i].poster_path);
+				
+				info.attr('class',result.results[i].original_title);
+				
+				
+				console.log('HEllo here is '+result.results[i].original_title);
+				
+				
 				info.attr('class',result.results[i].original_name);
 				info.html(result.results[i].overview);
 
@@ -191,8 +198,10 @@ block content
 				
 
 				gal.append(more_info);
-				$('#gallery').append(gal);
-				$('#gallery').css('margin-left','0px');
-				//console.log(result.results[i]);
+				$('#gal').append(gal);
+				//$('#gal').css('width','300px');
+				$('#gal').css('background-color','red');
+				//- /$('#gal').css('padding-left','70px');
+				console.log(result.results[i]);
 
 		}

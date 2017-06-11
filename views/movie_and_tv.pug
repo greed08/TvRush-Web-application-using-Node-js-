@@ -1,6 +1,7 @@
 extends layout
 block content
 
+
 	div.modal#my-modal2
 		div.modal-dialog
 			div.modal-content
@@ -42,9 +43,9 @@ block content
 					li
 						a(href="http://localhost:8000/") HOME
 					li
-						a(href="http://localhost:8000/search/tv/batman") TV
+						a(href="http://localhost:8000/search/tv/batman/") TV
 					li
-						a(href="http://localhost:8000/search/movies/batman") MOVIES
+						a(href="http://localhost:8000/search/movies/justice%20league/") MOVIES
 					li
 						a(href="#") ABOUT
 					li
@@ -67,9 +68,20 @@ block content
 	div#msg.modal
 		div.modal-dialog
 			div.modal-content
-				div.modal-body(style="background-color:#f6c20f;")
+				div.modal-body(style="background-color:yellow;color:#333;")
 					strong#response
+	div#info_movie.modal
+		div.modal-dialog
+			div.modal-content(style="width:330px;")
+				div.modal-header#res_header
+					button.close#desc_close(type="button" data-dismiss="modal" aria-hidden="true" style="color:#333;") &times;
+					h4#res_title
+					hr
+					img.img_overview
+				div.modal-body#res_body(style="background-color:#f6c20f;")
+					strong#result
 	div#gal
+
 
 	script.
 
@@ -88,6 +100,8 @@ block content
 		var ids=0;
 		for(var i =0;i<result.results.length;i++)
 		{
+			
+
 			var info=$('<span style="display:none;"></span>');
 			var title_=result.results[i].original_name;
 			var overview_=result.results[i].overview;
@@ -158,7 +172,7 @@ block content
 
 				var image_url='';
 
-				var more_info=$('<a href="#">More Info</a>');
+				var more_info=$('<a href="#" class="info">More Info</a>');
 				if(result.results[i].poster_path!==null){
 				image_url=base_url+result.results[i].poster_path;
 				//console.log(image_url);
@@ -187,7 +201,21 @@ block content
 				
 				
 				info.attr('class',result.results[i].original_name);
+				if(result.results[i].backdrop_path===null||result.results[i].backdrop_path===undefined)
+				{
+				console.log('Here backdrop  found');
+				info.attr('second_image',result.results[i].poster_path);
+				
+				}
+				else
+				{
+				console.log('Here backdrop not found');
+				info.attr('second_image',result.results[i].backdrop_path);
+				
+				}
 				info.html(result.results[i].overview);
+				
+
 
 				gal.append(image);
 				gal.append(info);
@@ -195,13 +223,14 @@ block content
 				gal.append(like_link);
 				gal.append(watch_link);
 				
-				
 
 				gal.append(more_info);
+				
+
 				$('#gal').append(gal);
 				//$('#gal').css('width','300px');
 				$('#gal').css('background-color','red');
-				//- /$('#gal').css('padding-left','70px');
+				//$('#gal').css('padding-left','70px');
 				console.log(result.results[i]);
 
 		}

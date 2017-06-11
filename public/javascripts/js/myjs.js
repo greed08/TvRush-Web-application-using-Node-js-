@@ -8,7 +8,7 @@ $(document).ready(function() {
             scroll_start = $(this).scrollTop();
             if (scroll_start > offset.top) {
                 $("#nav-bar").css('background-color', 'transparent');
-
+                
             } else {
                 $("#nav-bar").css('background-color', ' rgba(38, 28, 9,0.5)');
             }
@@ -63,17 +63,6 @@ url='http://localhost:8000/search/response';
 
       }
   });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -475,8 +464,41 @@ $('.add_to_wishlist').on('click',function(event)
         }*/
 
     };
+  $(document).ready(function()
+  {
+       $('.info').on('click',function()
+  {
+    let title=$(this).prev().prev().prev().prev('span').attr('class');
+    var img_src=$(this).prev().prev().prev().prev('span').attr('second_image');
+   
+    let url_="http://image.tmdb.org/t/p/w300"+img_src+"";
+      $('.img_overview').attr('src',url_);
+      $('.img_overview').css('width','230px');
+      $('.img_overview').css('height','140px');
+     
+    console.log(url_);
+   let overview=$(this).prev().prev().prev().prev('span').html();
+    $('.img_overview').attr('src',url_);
+    $('.img_overview').css('box-shadow','5px 5px 5px #000');
 
+    $("#result").html(overview);
+    $('#res_header').css('width','530px');
+    $('#res_header').css('background-color','yellow');
+    
+    $('.img_overview').css('display','block');
+    $('#res_header').css('color','#333');
+    $('#res_title').html(title);
+    $('#res_header').css('display','block');
+    $('#res_body').css('background-color','#333');
+    $('#res_body').css('float','left');
+    $('#res_body').css('width','530px');
+   $('#info_movie').fadeIn('slow').modal('show');
 
+   $('.desc_close').fadeOut('slow');
+ 
+  });
+  });
+ 
 
 
 });

@@ -50,11 +50,16 @@ a {
 #nav-bar
 {
   background-color: rgba(38, 28, 9,0.5);
+ 
   -webkit-transition: all 0.6s ease-out;
   -moz-transition: all 0.6s ease-out;
   -o-transition: all 0.6s ease-out;
   -ms-transition: all 0.6s ease-out;
   transition: all 0.6s ease-out;
+}
+.scrool
+{
+  height:50px;
 }
 input[type=search] {
   width: 130px;

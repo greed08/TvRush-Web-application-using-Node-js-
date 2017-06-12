@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
 var dbURI='mongodb://localhost/tv_db';
 var Schema  = mongoose.Schema;
+var ObjectId=Schema.ObjectId;
 mongoose.connect(dbURI);
 process.on('SIGINT', function() {
 mongoose.connection.close(function () {
@@ -24,41 +25,11 @@ var Userdata=new mongoose.Schema({
   createdOn:{type:Date,default:Date.now},
   modifiedOn:Date,
   lastLogin:Date,
-  likeTv:[{
-    tvTitle:{type:String},
-    tvImage:{type:String},
-    tvOverview:{type:String}
-  }],
-  likeMovie:[
-    {
-
-      movieImage:{type:String},
-      movieOverview:{type:String}
-    }
-  ],
-  watchlistTv:[
-    {
-
-      tvImage:{type:String},
-      tvOverview:{type:String}
-    }
-  ],
-  watchlistMovie:[
-    {
-
-      movieImage:{type:String},
-      movieOverview:{type:String}
-    }
-  ],
-  wishlistTv:[{
-
-    tvImage:{type:String},
-    tvOverview:{type:String}
-  }],
-  wishlistMovie:[{
-  
-    movieImage:{type:String},
-    movieOverview:{type:String}
-  }]
+  likeTv:[],
+  likeMovie:[],
+  watchlistTv:[],
+  watchlistMovie:[],
+  wishlistTv:[],
+  wishlistMovie:[]
 });
 mongoose.model('User',Userdata);

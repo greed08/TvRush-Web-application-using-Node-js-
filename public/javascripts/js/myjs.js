@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#msg').hide();
+    $('#msg').hide();
     var scroll_start = 0;
     var startchange = $('#nav-bar');
     var offset = startchange.offset();
@@ -17,6 +17,7 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
   $('.likes').on('click',function(event)
 {
 
@@ -75,127 +76,143 @@ url='http://localhost:8000/search/response';
 
 
 
+=======
+    $('.likes').on('click', function(event) {
+        $('#msg').hide();
+>>>>>>> 17a55dc47004a8970c1c86f4ae39529f487cc034
 
-
-
-
-
-
-
-
-
-
-});
-$('.add_to_watchlist').on('click',function(event)
-{
-
-  event.preventDefault();
-    var value=$('#tvormovie').val();
+        event.preventDefault();
+        var value = $('#tvormovie').val();
         console.log(value);
-  var img_src=$(this).prev('span').attr('id');
-  var overview=$(this).prev('span').html();
-  var title=$(this).prev('span').attr('class');
-  var eve=$(this).attr('class');
-var url='http://localhost:8000/search/response';
-  var info={
-    tv_or_movie:value,
-    eve:eve,
-    img_src:img_src,
-    title:title,
-    overview:overview
-  };
-  $.ajax({
-      url:url,
-      type: 'POST',
-      data: info,
+        var img_src = $(this).prev().prev('span').attr('id');
+        var overview = $(this).prev().prev('span').html();
+        var title = $(this).prev().prev('span').attr('class');
+        var eve = $(this).attr('class');
+        var url;
+        url = 'http://localhost:8000/search/response';
+        var info = {
+            tv_or_movie: value,
+            eve: eve,
+            img_src: img_src,
+            title: title,
+            overview: overview,
+            title: title
+        };
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: info,
 
-      dataType: 'JSON',
-      success: function(msg) {
-                if(msg.success){
-                console.log('sent  data');
-                  $("#response").html(msg.msg);
-                  $('#msg').fadeIn().delay(3000).fadeOut();
-              }
+            dataType: 'JSON',
+            success: function(msg) {
+                if (msg.success) {
+                    console.log('sent  data');
+                    $("#response").html(msg.msg);
+                    $('#msg').fadeIn().delay(3000).fadeOut();
 
-
-
-
-
-      },
-
-
-      error: function(error) {
-
-      }
-  });
-
-
-});
-$('.add_to_wishlist').on('click',function(event)
-{
-  event.preventDefault();
-    var value=$('#tvormovie').val();
-    console.log(value);
-  var img_src=$(this).prev().prev().prev('span').attr('id');
-  var overview=$(this).prev().prev().prev('span').html();
-  var title=$(this).prev().prev().prev('span').attr('class');
-  var eve=$(this).attr('class');
-  url='http://localhost:8000/search/response';
-
-  var info={
-    tv_or_movie:value,
-    eve:eve,
-    img_src:img_src,
-    title:title,
-    overview:overview
-  };
-  $.ajax({
-      url:url,
-      type: 'POST',
-      data: info,
-
-      dataType: 'JSON',
-      success: function(msg) {
-                if(msg.success){
-                console.log('sent data');
-                  $("#response").html(msg.msg);
-                  $('#msg').fadeIn().delay(3000).fadeOut();
-              }
+                }
 
 
 
 
-
-      },
-
-
-      error: function(error) {
-
-      }
-  });
+            },
 
 
-});
+            error: function(error) {
+
+            }
+        });
 
 
 
 
+    });
+    $('.add_to_watchlist').on('click', function(event) {
+
+        event.preventDefault();
+        var value = $('#tvormovie').val();
+        console.log(value);
+        var img_src = $(this).prev('span').attr('id');
+        var overview = $(this).prev('span').html();
+        var title = $(this).prev('span').attr('class');
+        var eve = $(this).attr('class');
+        var url = 'http://localhost:8000/search/response';
+        var info = {
+            tv_or_movie: value,
+            eve: eve,
+            img_src: img_src,
+            title: title,
+            overview: overview
+        };
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: info,
+
+            dataType: 'JSON',
+            success: function(msg) {
+                if (msg.success) {
+                    console.log('sent  data');
+                    $("#response").html(msg.msg);
+                    $('#msg').fadeIn().delay(3000).fadeOut();
+                }
 
 
 
 
+            },
+
+
+            error: function(error) {
+
+            }
+        });
+
+
+    });
+    $('.add_to_wishlist').on('click', function(event) {
+        event.preventDefault();
+        var value = $('#tvormovie').val();
+        console.log(value);
+        var img_src = $(this).prev().prev().prev('span').attr('id');
+        var overview = $(this).prev().prev().prev('span').html();
+        var title = $(this).prev().prev().prev('span').attr('class');
+        var eve = $(this).attr('class');
+        url = 'http://localhost:8000/search/response';
+
+        var info = {
+            tv_or_movie: value,
+            eve: eve,
+            img_src: img_src,
+            title: title,
+            overview: overview
+        };
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: info,
+
+            dataType: 'JSON',
+            success: function(msg) {
+                if (msg.success) {
+                    console.log('sent data');
+                    $("#response").html(msg.msg);
+                    $('#msg').fadeIn().delay(3000).fadeOut();
+                }
 
 
 
 
+            },
 
 
+            error: function(error) {
+
+            }
+        });
 
 
-
-
-
-
+    });
 
 
 
@@ -205,44 +222,23 @@ $('.add_to_wishlist').on('click',function(event)
 
 
         $('#my-modal').fadeIn(1000).modal('show');
-        $(body).click(function()
-      {
-        $('#my-modal').fadeOut();
-      });
+        $(body).click(function() {
+            $('#my-modal').fadeOut();
+        });
 
-    });/*----Search movies and tv shows */
-     $('#search').on('click',search_content);
-    function search_content(event)
-    {
+    }); /*----Search movies and tv shows */
+    $('#search').on('click', search_content);
+
+    function search_content(event) {
         event.preventDefault();
-        var query=$('#queryy').val();
-        var value=$('#tvormovie').val();
-        if(value==="Movies")
-        var url="http://localhost:8000/search/movies/"+query+"/";
+        var query = $('#queryy').val();
+        var value = $('#tvormovie').val();
+        if (value === "Movies")
+            var url = "http://localhost:8000/search/movies/" + query + "/";
         else
-        var url="http://localhost:8000/search/tv/"+query+"/";
-        window.location.href=url;
+            var url = "http://localhost:8000/search/tv/" + query + "/";
+        window.location.href = url;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -285,7 +281,7 @@ $('.add_to_wishlist').on('click',function(event)
 
                         if (msg.session_user !== '' || msg.session_user !== undefined) {
                             $('#err').html(msg.message);
-                            var url="http://localhost:8000/users/profile/";
+                            var url = "http://localhost:8000/users/profile/";
                             window.location.href = url;
                             $('#input_user').val('');
                             $('#input_pass').val('');
@@ -465,6 +461,7 @@ $('.add_to_wishlist').on('click',function(event)
         }*/
 
     };
+<<<<<<< HEAD
   $(document).ready(function()
   {
        $('.info').on('click',function()
@@ -499,6 +496,40 @@ $('.add_to_wishlist').on('click',function(event)
 
   });
   });
+=======
+    $(document).ready(function() {
+        $('.info').on('click', function() {
+            let title = $(this).prev().prev().prev().prev('span').attr('class');
+            var img_src = $(this).prev().prev().prev().prev('span').attr('second_image');
+
+            let url_ = "http://image.tmdb.org/t/p/w300" + img_src + "";
+            $('.img_overview').attr('src', url_);
+            $('.img_overview').css('width', '230px');
+            $('.img_overview').css('height', '140px');
+
+            console.log(url_);
+            let overview = $(this).prev().prev().prev().prev('span').html();
+            $('.img_overview').attr('src', url_);
+            $('.img_overview').css('box-shadow', '5px 5px 5px #000');
+
+            $("#result").html(overview);
+            $('#res_header').css('width', '530px');
+            $('#res_header').css('background-color', 'yellow');
+
+            $('.img_overview').css('display', 'block');
+            $('#res_header').css('color', '#333');
+            $('#res_title').html(title);
+            $('#res_header').css('display', 'block');
+            $('#res_body').css('background-color', '#333');
+            $('#res_body').css('float', 'left');
+            $('#res_body').css('width', '530px');
+            $('#info_movie').fadeIn('slow').modal('show');
+
+            $('.desc_close').fadeOut('slow');
+
+        });
+    });
+>>>>>>> 17a55dc47004a8970c1c86f4ae39529f487cc034
 
 
 

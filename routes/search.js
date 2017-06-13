@@ -21,6 +21,10 @@ router.post('/response',function(req,res)
    {
    msg='Please login first!!';
 
+  res.json({
+               success:true,
+               msg:msg
+             });
  }
    else {
      if(data.eve==='likes')

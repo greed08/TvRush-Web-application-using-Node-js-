@@ -17,69 +17,29 @@ $(document).ready(function() {
 
 
 
-<<<<<<< HEAD
-  $('.likes').on('click',function(event)
-{
+ $(function() {
+    if (localStorage.getItem('tvormovie')) {
+        $("#tvormovie option").eq(localStorage.getItem('tvormovie')).prop('selected', true);
+    }
 
-  $('#msg').hide();
-
-  event.preventDefault();
-  var value=$('#tvormovie').val();
-      console.log(value);
-  var img_src=$(this).prev().prev('span').attr('id');
-  var overview=$(this).prev().prev('span').html();
-  var title=$(this).prev().prev('span').attr('class');
-  var eve=$(this).attr('class');
-  var url;
-url='http://localhost:8000/search/response';
-  var info={
-    tv_or_movie:value,
-    eve:eve,
-    img_src:img_src,
-    title:title,
-    overview:overview,
-    title:title
-  };
-  $.ajax({
-      url:url,
-      type: 'POST',
-      data: info,
-
-      dataType: 'JSON',
-      success: function(msg) {
-                if(msg.success){
-                console.log('sent  data');
-                $("#response").html(msg.msg);
-                $('#msg').fadeIn().delay(3000).fadeOut();
-
-              }
+    $("#tvormovie").on('change', function() {
+        localStorage.setItem('tvormovie', $('option:selected', this).index());
+    });
+});
 
 
 
 
 
-      },
-
-
-      error: function(error) {
-
-      }
-  });
-
-
-
-
-
-
-
-
-
-
-
-=======
+var btn_clicked=0;
     $('.likes').on('click', function(event) {
         $('#msg').hide();
->>>>>>> 17a55dc47004a8970c1c86f4ae39529f487cc034
+        btn_clicked++;
+        if(btn_clicked%2!=0)
+        {
+            
+            $('.likes').css('color','orange');
+        }
 
         event.preventDefault();
         var value = $('#tvormovie').val();
@@ -326,11 +286,7 @@ url='http://localhost:8000/search/response';
 
 
     /*Form data-sending to server using ajax
-
-
-
     REGISTRAION
-
     */
     $('#sign-up').on('click', adduser);
 
@@ -342,7 +298,6 @@ url='http://localhost:8000/search/response';
      if($(this).val()==='')
      {
        err++;
-
      }
    });*/
 
@@ -453,7 +408,6 @@ url='http://localhost:8000/search/response';
           var password=$('#input_password').val();
            if(email==='')
            $('#error').html('Enter your email dude !');
-
            else if(username==='')
            $('#email').html('Enter your name buddy !');
            if(password==='')
@@ -461,42 +415,6 @@ url='http://localhost:8000/search/response';
         }*/
 
     };
-<<<<<<< HEAD
-  $(document).ready(function()
-  {
-       $('.info').on('click',function()
-  {
-    let title=$(this).prev().prev().prev().prev('span').attr('class');
-    var img_src=$(this).prev().prev().prev().prev('span').attr('second_image');
-
-    let url_="http://image.tmdb.org/t/p/w300"+img_src+"";
-      $('.img_overview').attr('src',url_);
-      $('.img_overview').css('width','230px');
-      $('.img_overview').css('height','140px');
-
-    console.log(url_);
-   let overview=$(this).prev().prev().prev().prev('span').html();
-    $('.img_overview').attr('src',url_);
-    $('.img_overview').css('box-shadow','5px 5px 5px #000');
-
-    $("#result").html(overview);
-    $('#res_header').css('width','530px');
-    $('#res_header').css('background-color','yellow');
-
-    $('.img_overview').css('display','block');
-    $('#res_header').css('color','#333');
-    $('#res_title').html(title);
-    $('#res_header').css('display','block');
-    $('#res_body').css('background-color','#333');
-    $('#res_body').css('float','left');
-    $('#res_body').css('width','530px');
-   $('#info_movie').fadeIn('slow').modal('show');
-
-   $('.desc_close').fadeOut('slow');
-
-  });
-  });
-=======
     $(document).ready(function() {
         $('.info').on('click', function() {
             let title = $(this).prev().prev().prev().prev('span').attr('class');
@@ -529,7 +447,6 @@ url='http://localhost:8000/search/response';
 
         });
     });
->>>>>>> 17a55dc47004a8970c1c86f4ae39529f487cc034
 
 
 

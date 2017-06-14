@@ -67,6 +67,7 @@ var btn_clicked=0;
             success: function(msg) {
                 if (msg.success) {
                     console.log('sent  data');
+                    $('#res_bod').css('background-color','#f72624');
                     $("#response").html(msg.msg);
                     $('#msg').fadeIn().delay(3000).fadeOut();
 
@@ -113,6 +114,7 @@ var btn_clicked=0;
             success: function(msg) {
                 if (msg.success) {
                     console.log('sent  data');
+                    $('#res_bod').css('background-color','#71afd4');
                     $("#response").html(msg.msg);
                     $('#msg').fadeIn().delay(3000).fadeOut();
                 }
@@ -156,6 +158,7 @@ var btn_clicked=0;
             success: function(msg) {
                 if (msg.success) {
                     console.log('sent data');
+                     $('#res_bod').css('background-color','#0cd395');
                     $("#response").html(msg.msg);
                     $('#msg').fadeIn().delay(3000).fadeOut();
                 }
@@ -182,9 +185,7 @@ var btn_clicked=0;
 
 
         $('#my-modal').fadeIn(1000).modal('show');
-        $(body).click(function() {
-            $('#my-modal').fadeOut();
-        });
+       
 
     }); /*----Search movies and tv shows */
     $('#search').on('click', search_content);
@@ -201,10 +202,21 @@ var btn_clicked=0;
     }
 
 
-
+$( "#dialog-form" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
 
     $('#sign_in').click(function() {
         $('#my-modal2').fadeIn(1000).modal('show');
+       //$("#dialog-form").dialog("open");
     });
     /*----Log out -------*/
     $('#log_out').on('click', logout);
@@ -420,27 +432,33 @@ var btn_clicked=0;
             let title = $(this).prev().prev().prev().prev('span').attr('class');
             var img_src = $(this).prev().prev().prev().prev('span').attr('second_image');
 
-            let url_ = "http://image.tmdb.org/t/p/w300" + img_src + "";
+            let url_ = "http://image.tmdb.org/t/p/w500" + img_src + "";
             $('.img_overview').attr('src', url_);
-            $('.img_overview').css('width', '230px');
-            $('.img_overview').css('height', '140px');
+            //$('.img_overview').css('width', '300px');
+            //$('.img_overview').css('height', '240px');
 
             console.log(url_);
             let overview = $(this).prev().prev().prev().prev('span').html();
             $('.img_overview').attr('src', url_);
-            $('.img_overview').css('box-shadow', '5px 5px 5px #000');
+            //$('.img_overview').css('box-shadow', '5px 5px 5px #000');
+
 
             $("#result").html(overview);
-            $('#res_header').css('width', '530px');
-            $('#res_header').css('background-color', 'yellow');
+            //$('#res_header').css('width', '530px');
+            $('#res_header').css('background-color', '#71afd4');
 
             $('.img_overview').css('display', 'block');
+            $('.img_overview').css('margin-left','auto');
+            $('.img_overview').css('margin-right','auto');
             $('#res_header').css('color', '#333');
+            $('#res_header').css('text-align','center');
             $('#res_title').html(title);
             $('#res_header').css('display', 'block');
-            $('#res_body').css('background-color', '#333');
-            $('#res_body').css('float', 'left');
-            $('#res_body').css('width', '530px');
+            $('#res_body').css('background-color', '#083B65');
+            //$('#res_body').css('float', 'left');
+            //$('#res_body').css('width', '530px');
+         
+            $('.img_overview').css('height','280px');
             $('#info_movie').fadeIn('slow').modal('show');
 
             $('.desc_close').fadeOut('slow');

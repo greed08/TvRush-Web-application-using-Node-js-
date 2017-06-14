@@ -26,7 +26,7 @@ block content
 								div.col-lg-8
 									button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
 
-	nav.navbar.navbar-default.navbar#nav-bar2(role="navigation",style="background-color:transparent;")
+	nav.navbar.navbar-default.navbar#nav-bar2(role="navigation",style="background-color:transparent")
 		div.container-fluid
 			div.navbar-header
 				button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
@@ -34,8 +34,9 @@ block content
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-				a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
-					img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
+				a.navbar-brand(href="#",style="background-color:#1F3D57;")
+					img(src="/images/logo_nav.png",alt="",style="height:76px;width:65px;padding-bottom:40px;")
+
 
 
 			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
@@ -60,27 +61,32 @@ block content
 
 
 					select.form-control#tvormovie(data-style="btn-warning",style="margin-right:5px;background-color:transparent;color:#FFF;")
-						option(value="Tv series",style="color:#FFF;background-color:transparent;") Tv Series
+						option(value="TV",style="color:#FFF;background-color:transparent;") TV
 						option(value="Movies",style="color:#FFF") Movies
 					input#queryy(type="search",placeholder="Search")
 
-					btn.btn.btn-warning#search(style="border-radius:50%;margin-left:5px;") Search
+					btn.btn.btn-default#search(style="border-radius:3%;margin-left:5px;background-color:#083b65;") Search
+	//hr#hrr
 	div#msg.modal
 		div.modal-dialog
 			div.modal-content
-				div.modal-body(style="background-color:yellow;color:#333;")
+				div.modal-body#res_bod(style="background-color:#71afd4;color:#fff;")
 					p#response(style="text-align:center;font-size:15px;")
 	div#info_movie.modal
 		div.modal-dialog
-			div.modal-content(style="width:330px;")
+			div.modal-content#res_content
 				div.modal-header#res_header
 					button.close#desc_close(type="button" data-dismiss="modal" aria-hidden="true" style="color:#333;") &times;
 					h4#res_title
 					hr
-					img.img_overview
+					img.img_overview.img-responsive
 				div.modal-body#res_body(style="background-color:#f6c20f;")
 					strong#result
-	div#gal
+	//h3(style="margin-left:20px") Showing search results...
+	//div.container(padding-left:auto;padding-right:auto;")
+	//div#gal
+
+
 
 
 	script.
@@ -89,7 +95,7 @@ block content
 		if(!{JSON.stringify(session_user)} !==undefined)
 			user_current=!{JSON.stringify(session_user)};
 
-
+ 
 		var result=!{JSON.stringify(result)};
 		if(user_current!==' '){
 			$('#user_current').css('display','block');
@@ -106,7 +112,7 @@ block content
 			var title_=result.results[i].original_name;
 			var overview_=result.results[i].overview;
 			
-			var gal=$('<div></div>');
+			var gal=$('<div id="gall" class="well"></div>');
 
 
 			gal.addClass('gallery');
@@ -114,9 +120,14 @@ block content
 			description.addClass('desc');
 			gal.css('margin','5px');
 			gal.css('border','1px solid #ccc');
+			
+			//gal.css('white-space','nowrap');
+			gal.css('background-color','#0a111b');
 			gal.css('float','left');
-			gal.css('width','244px');
-			gal.css('height','310px');
+		
+		     
+			gal.css('width','245px');
+			gal.css('height','330px');
 			
 			
 
@@ -125,9 +136,9 @@ block content
 
 			description.css('height','30px');
 
-			gal.css('background-color','transparent');
 			gal.css('padding-top','0px');
-			gal.css('border','#a7a7a7 solid 2px');
+		
+			gal.css('border','#0b0d19 solid 2px');
 
        
 
@@ -139,7 +150,7 @@ block content
 				var base_url="http://image.tmdb.org/t/p/w185";
 				$('#nav-bar2').css('margin-bottom','0px');
 
-				var image=$('<img></img>');
+				var image=$('<img class="img-responsive" id="gal_image"></img>');
 
 				var links=$('<span></span>');
 				var add_link=$('<a href="#" class="add_to_watchlist" ></a>');
@@ -148,10 +159,10 @@ block content
 				var add=$('<i class="fa fa-plus-square " action="submit"></i>');
 				var watch_list=$('<i class="fa fa-list " action="submit"></li>')
 				var like=$('<i class="fa fa-heart " action="submit"></i>');
-					add.css('color','#BEBCBA');
-					watch_list.css('color','#5b7983')
+					add.css('color','#afeeee');
+					watch_list.css('color','#e0ffff')
 
-					like.css('color','#CC0000');
+					like.css('color','	#DC143C');
           
 					add_link.append(add);
 					add_link.attr('id',ids);
@@ -167,7 +178,7 @@ block content
 				watch_link.css('margin-left','7px');
 				links.css('margin-left','7px');
 
-				$('#gallery').css('background-color','#1D1D1D');
+				$('#gallery').css('background-color','#0b0d19');
 				$('#gallery').css('font-family','"Oswald", sans-serif');
 
 				var image_url='';
@@ -181,14 +192,17 @@ block content
 				{
 				continue;
 				}
-				$('body').css('background-color','#1D1D1D');
-				$('body').css('margin','0px');
+			
+				
 				more_info.css('margin-left','7px');
 				image.attr('src',image_url);
 				description.append(links);
-				image.css('height','280px');
-				image.css('width','240px');
-				image.css('margin-top','0px');
+				//image.css('width','310px');
+				image.css('height','300px');
+				image.css('padding-top','15px');
+				image.css('display','block');
+				image.css('margin-left','auto');
+				image.css('margin-right','auto');
 				image.attr('id',ids);
 				ids++;
 
@@ -225,11 +239,18 @@ block content
 				
 
 				gal.append(more_info);
-				
+			
+				//$('body').css('background-color','#');
+			
+				$('body').css('background-color','#1F3D57');
+			
 
-				$('#gal').append(gal);
+
+				
+		
+				$('body').append(gal);
 				//$('#gal').css('width','300px');
-				$('#gal').css('background-color','red');
+				//$('#gal').css('background-color','green');
 				//$('#gal').css('padding-left','70px');
 				console.log(result.results[i]);
 

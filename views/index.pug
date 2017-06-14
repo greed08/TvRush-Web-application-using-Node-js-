@@ -4,11 +4,10 @@ block content
 	div.modal#my-modal2
 		div.modal-dialog
 			div.modal-content
-				div.modal-body(style="background-color:#dddfd4;")
-					img.img-responsive(src="images/logo.png")
-					span
-						h2(style="color:rgb(167,167,167);text-align:center;")
-							i How you doin'?
+				div.modal-body(style="background-color:#455D6A;")
+					img.img-responsive(src="images/new_logo3.png")
+					h4(style="color:rgb(167,167,167);text-align:center;")
+						i How you doin'?
 					hr
 					h5#err(style="margin-bottom:20px;color:rgb(214, 44, 26);text-align:center;")
 					form.form-horizontal#form-sign-in(action="http://localhost:8000/users/login")
@@ -23,7 +22,7 @@ block content
 									input.form-control#input_pass(type="password",placeholder="Enter password")
 							div.form-group
 								div.col-lg-8
-									button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
+									button.btn.btn-danger#sign-in(type="submit",style="margin-left:60%;") SIGN IN
 
 
 	nav.navbar.navbar-default.navbar-fixed-top#nav-bar(role="navigation")
@@ -34,8 +33,8 @@ block content
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-				a.navbar-brand(href="#",style="background-color:rgb(246, 194, 15);")
-					img(src="/images/logo.png",alt="",style="height:60px;padding-bottom:20px;")
+				a.navbar-brand(href="#",style="background-color:#1F3D57")
+					img(src="/images/logo_nav.png",alt="",style="height:76px;width:65px;padding-bottom:40px;")
 
 
 			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
@@ -54,12 +53,12 @@ block content
 						a#sign_in(href="#") SIGN IN
 				form.navbar-form.navbar-right(role="search")
 
-					select.form-control#tvormovie(data-style="btn-warning",style="margin-right:5px;background-color:transparent;color:#FFF;")
-						option(value="Tv series",style="color:#FFF;background-color:transparent;") Tv Series
-						option(value="Movies",style="color:#FFF") Movies
+					select.form-control#tvormovie(data-style="btn-warning",style="margin-right:5px;background-color:transparent;color:#FFF;font-size")
+						option(value="TV",style="color:#FFF;background-color:transparent;font-size:15px") TV
+						option(value="Movies",style="color:#FFF;font-size:15px;") Movies
 					input#queryy(type="search",placeholder="Search")
 
-					btn.btn.btn-warning#search(style="border-radius:50%;margin-left:5px;") Search
+					btn.btn.btn-default#search(style="border-radius:3%;margin-left:5px;background-color:#083b65;") Search
 
 
 
@@ -70,10 +69,10 @@ block content
 				div.fill#first-image
 
 				div.carousel-caption
-
-					h1#heading Track what you're watching.
+					img(src="/images/new_logo3.png",alt="")
+					h1#heading(style="text-shadow:2.3px 2.3px #a2a2a2;") Track what you're watching.
 					h3#subhead Find your favourite tv shows and movies!
-					button.btn-warning#join JOIN TV RUSH
+					button#join JOIN TV RUSH
 
 	footer#foot
 
@@ -90,14 +89,13 @@ block content
 					div.modal#my-modal
 						div.modal-dialog
 							div.modal-content#modal-content
-								div.modal-body#modal-body
-									img.img-responsive(src='images/logo.png')
-									span
-										h2(style="color:rgb(167, 167, 167)")
-											i Treat. Yo. Self.
+								div.modal-body#modal-body(style="background-color:#455D6A;")
+									img.img-responsive(src='images/new_logo3.png')
+									h4(style="color:rgb(167, 167, 167);")
+										i Treat. Yo. Self.
 									hr(style="display:block;border-top:2px solid #173e43;")
 									//hr(style="display:block;border-top:4px solid #173e43;")
-									h5#error(style="margin-bottom:20px;color:rgb(214, 44, 26);")
+									h5#error(style="margin-bottom:20px;color:#71afd4")
 									form.form-horizontal#form-sign-up(action="http://localhost:8000/users/new",name="regis-form",onsubmit="return validateForm()")
 
 										fieldset

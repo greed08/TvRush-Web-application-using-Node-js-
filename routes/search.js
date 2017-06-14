@@ -579,8 +579,6 @@ router.get('/tv/:query', function(req, res) {
 
 });
 
-<<<<<<< HEAD
+
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> 9229f4236748cdcff4262ea2f200c65b5a1f433d
+

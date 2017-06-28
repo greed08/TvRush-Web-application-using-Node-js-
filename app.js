@@ -19,7 +19,7 @@ var search=require('./routes/search');
 
 var app = express();
 // view engine setup
-app.use(cache('5 minutes'));
+//app.use(cache('5 minutes'));
 app.use(session({
   secret:'Iamahumanwithnoextraordinarypowers',
   resave:false,

@@ -26,7 +26,7 @@ block content
 								div.col-lg-8
 									button.btn.btn-danger.btn-lg#sign-in(type="submit",style="margin-left:60%;") SIGN IN
 
-	nav.navbar.navbar-default.navbar#nav-bar2(role="navigation",style="background-color:transparent")
+	nav.navbar.navbar-default.navbar-fixed-top#nav-bar2(role="navigation",style="background-color:#027292;")
 		div.container-fluid
 			div.navbar-header
 				button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
@@ -34,8 +34,8 @@ block content
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-				a.navbar-brand(href="#",style="background-color:#1F3D57;")
-					img(src="/images/logo_nav.png",alt="",style="height:76px;width:65px;padding-bottom:40px;")
+				a.navbar-brand(href="#",style="background-color:#027292;")
+					img(src="/images/logo_nav.png",alt="",style="height:76px;width:65px;padding-bottom:45px;")
 
 
 
@@ -84,7 +84,7 @@ block content
 					strong#result
 	//h3(style="margin-left:20px") Showing search results...
 	//div.container(padding-left:auto;padding-right:auto;")
-	//div#gal
+	div#gal_1(style="margin-top:60px;")
 
 
 
@@ -98,6 +98,8 @@ block content
  
 		var result=!{JSON.stringify(result)};
 		if(user_current!==' '){
+			$('#user_current').css('color','#71afd4');
+			$('#user_current').css('margin-left','10px');
 			$('#user_current').css('display','block');
 			$('#user_current').html('Hi,');
 			$('#user_current').append(user_current);
@@ -248,7 +250,7 @@ block content
 
 				
 		
-				$('body').append(gal);
+				$('#gal_1').append(gal);
 				//$('#gal').css('width','300px');
 				//$('#gal').css('background-color','green');
 				//$('#gal').css('padding-left','70px');

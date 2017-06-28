@@ -1,5 +1,55 @@
 extends layout
 block content
-	h1 Welcome&nbsp
-		session_user=session_user
-	button.btn.btn-danger#log_out Log Out
+	div.jumbotron
+		h1 Welcome&nbsp
+			session_user=session_user
+		button.btn.btn-danger#log_out Log Out
+	div.container Your liked movies are
+		div.like_tv_list
+	div.container Your liked TV shows are
+		ul.like_tv_shows
+	div.container Your watched movies
+		ul.watch_movies
+	div.container Your watched tv shows
+		ul.watch_tv
+	div.container Your wish list of movies are
+		ul.wishmovie
+	div.container Your wish list of tv shows are
+		ul.wishtv
+	script.
+		var like_movies= !{JSON.stringify(like_movie)};
+		var like_tvs=!{JSON.stringify(like_tv)};
+		var watch_tv=!{JSON.stringify(watch_tv)};
+		var watch_movie=!{JSON.stringify(watch_movie)};
+		var wish_list_tv=!{JSON.stringify(wish_list_tv)};
+		var wish_list_movie=!{JSON.stringify(wish_list_movie)};
+		var ul=$('.like_tv_list');
+		
+		for(let i =0;i<like_movies.length;i++)
+		{
+			var url='http://image.tmdb.org/t/p/w185';
+			let list=$('<li></li>');
+			let img=$('<img class="img-responsive"></img>');
+			let well=$('<div class="well" id="like_movie"></div>')
+			url+=like_movies[i];
+			img.attr('src',url);
+			img.css('height','280px');
+		
+			img.css('padding-top','15px');
+			img.css('display','block');
+			img.css('margin-left','auto');
+			img.css('margin-right','auto');
+			well.css('width','245px');
+			well.css('height','330px');
+			well.css('background-color','#0a111b');
+			well.css('float','left');
+			well.append(img);
+			well.css('margin','5px');
+			well.css('border','1px solid #ccc');
+			
+		  img.css('float','left');
+			
+			ul.append(well);
+		}
+		
+		

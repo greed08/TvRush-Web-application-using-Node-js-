@@ -9,15 +9,48 @@ router.get('/profile', function(req, res) {
     if (req.session.user === undefined || req.session.usr === '')
         res.redirect('/');
     else if (req.session.user !== ''||req.session.user!== undefined) {
-        console.log('sjhgsdjahghjsedg'+req.params.user);
-        res.render('user_profile', {
-            session_user: req.session.user
-        });
+
+
+        User.findOne({username:req.session.user},{likeTv:1,likeMovie:1,watchlistTv:1,watchlistMovie:1,wishlistTv:1,wishlistMovie:1},function(err,db_data)
+      {
+          if(err)
+          {
+            uti.log('Error occured while fetching');
+          }
+          else {
+            var db_list=db_data;
+            var like_movie=db_list.likeMovie;
+            var like_tv=db_list.likeTv;
+            var watch_tv=db_list.watchlistTv;
+            var watch_movie=db_list.watchlistMovie;
+            var wish_list_tv=db_list.wishlistTv;
+            var wish_list_movie=db_list.wishlistMovie;
+            console.log('Your liked movies are '+like_movie);
+            console.log('Your liked tv shows are '+like_tv);
+
+
+          }
+          res.render('user_profile', {
+              session_user: req.session.user,
+              like_movie:db_list.likeMovie,
+              like_tv:db_list.likeTv,
+              watch_tv:db_list.watchlistTv,
+              watch_movie:db_list.watchlistMovie,
+              wish_list_tv:db_list.wishlistTv,
+              wish_list_movie:db_list.wishlistMovie
+
+
+          });
+      });
+
+        console.log('Logged in User is'+req.params.user);
+
         console.log('Session user is ' + req.session.user);
     }
 });
 router.get('/logout', function(req, res) {
     delete req.session.user;
+
     req.flash('msg', 'You are successfully logging out');
     res.redirect('/');
 });
@@ -31,6 +64,7 @@ router.post('/login', function(req, res) {
         //console.log(pass);
         //res.send({success:true})
         var ses_user = '';
+
         var msg = '';
         var success = false;
         User.findOne({
@@ -44,6 +78,8 @@ router.post('/login', function(req, res) {
                     util.log(user.email);
 
                     ses_user = req.session.user = user.username;
+
+
 
                     msg = 'You exist in our database, ' + ses_user + ' You will be redirected to profile page';
                     util.log('Session user is ' + ses_user);

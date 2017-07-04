@@ -8,3 +8,19 @@ Here are some screenshots..
 
 
 ![alt text](screenshots/screen2.png "Sign Up form")
+
+
+
+![alt text](screenshots/screen3.png "Search movie")
+
+
+![alt text](screenshots/screen4.png "Clicking like button wisthout login")
+
+
+![alt text](screenshots/screen5.png "Brief description of movie or tv show")
+
+![alt text](screenshots/screen6.png "Like/Dislike add to watched history")
+
+
+Work still in progress..
+Cheers!!!
